@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_pmm/app/shared/web/logging.dart';
 
 part 'get_dio.g.dart';
 
@@ -11,9 +12,14 @@ class GetDio {
   GetDio(this.dio);
 
   Future<List> call(String url) async {
-    print('Chegou aki');
-    var result = await dio.get(url);
-    print(result);
+    final Dio _dio = Dio(
+      BaseOptions(
+        baseUrl: url,
+        connectTimeout: 5000,
+        receiveTimeout: 3000,
+      ),
+    )..interceptors.add(Logging());
+    var result = await _dio.get('');
     if (result.statusCode == 200) {
       var jsonList = result.data['dados'] as List;
       return jsonDecode(jsonList.toString());

@@ -38,6 +38,7 @@ dependencies:
     sdk: flutter
 
 dev_dependencies:
+  mockito: ^5.0.16
   modular_codegen: ^3.0.3
   moor_generator: ^4.5.1
   flutter_lints: ^1.0.0

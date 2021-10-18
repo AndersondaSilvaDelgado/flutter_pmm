@@ -15,7 +15,7 @@ class AtividadeDatasourceWeb extends GenericDatasource<AtividadeModel> {
   @override
   Future<List<AtividadeModel>> getAllGeneric() async {
     var data =
-        await getDio("http://www.usinasantafe.com.br/fpmmdev/atividade.php");
+        await getDio("http://www.usinasantafe.com.br/fpmmdev/view/atividade.php");
     List<AtividadeModel> dados = List<AtividadeModel>.from(
         data.map((data) => AtividadeModel.fromJson(data)));
     return dados;

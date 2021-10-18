@@ -23,7 +23,6 @@ class AtividadeRepositoryImpl extends GenericRepository<Atividade> {
   Future<Either<ErrorException, List<Atividade>>> getAllGeneric() async {
     try {
       List<AtividadeModel> dados = await datasourceWeb.getAllGeneric();
-      print(dados.isEmpty);
       return Right(dados);
     } catch (e) {
       return Left(ErrorSearch());
