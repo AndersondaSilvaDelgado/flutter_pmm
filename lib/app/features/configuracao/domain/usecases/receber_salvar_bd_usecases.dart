@@ -6,7 +6,7 @@ import 'package:flutter_pmm/app/shared/errors/errors.dart';
 part 'receber_salvar_bd_usecases.g.dart';
 
 mixin ReceberSalvarBDUsecases {
-  Future<Either<ErrorException, bool>> call();
+  Future<Either<Failure, bool>> call();
 }
 
 @Injectable(singleton: false)
@@ -17,9 +17,9 @@ class ReceberSalvarBDUsecasesImpl {
     this.atividadeRepository,
   );
 
-  Future<bool> receber() async {
-    // print('teste2');
-    await atividadeRepository.getAllGeneric();
-    return true;
+  Future<Either<Failure, bool>> receber() async {
+    var data = await atividadeRepository.getAllGeneric();
+    return data.fold(
+        (l) => left(l), (r) => atividadeRepository.addAllGeneric(r));
   }
 }

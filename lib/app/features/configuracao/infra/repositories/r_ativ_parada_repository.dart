@@ -1,28 +1,32 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_pmm/app/features/configuracao/domain/entities/r_ativ_parada.dart';
-import 'package:flutter_pmm/app/features/configuracao/domain/errors/errors.dart';
 import 'package:flutter_pmm/app/features/configuracao/domain/repositories/generic_repository.dart';
 import 'package:flutter_pmm/app/features/configuracao/external/web/r_ativ_parada_datasource.dart';
-import 'package:flutter_pmm/app/features/configuracao/infra/models/r_ativ_parada_model.dart';
 import 'package:flutter_pmm/app/shared/errors/errors.dart';
 
+part 'r_ativ_parada_repository.g.dart';
+
+@Injectable(singleton: false)
 class RAtivParadaRepositoryImpl extends GenericRepository<RAtivParada> {
-  final RAtivParadaDatasourceWeb datasource;
-  RAtivParadaRepositoryImpl(this.datasource);
+  final RAtivParadaDatasourceWeb datasourceWeb;
+  RAtivParadaRepositoryImpl(this.datasourceWeb);
 
   @override
-  Future<Either<ErrorException, List<RAtivParada>>> getAllGeneric() async {
+  Future<Either<Failure, List<RAtivParada>>> getAllGeneric() async {
     try {
-      List<RAtivParadaModel> dados = await datasource.getAllGeneric();
-      return Right(dados);
+      var data = await datasourceWeb.getAllGeneric();
+      return data.fold(
+        (l) => left(l),
+        (r) => right(r),
+      );
     } catch (e) {
-      return Left(ErrorSearch());
+      return Left(ErroReturnRepository());
     }
   }
 
   @override
-  Future<Either<ErrorException, bool>> addAllGeneric(
-      List<RAtivParada> atividadeList) {
+  Future<Either<Failure, bool>> addAllGeneric(List<RAtivParada> atividadeList) {
     // TODO: implement addAllGeneric
     throw UnimplementedError();
   }

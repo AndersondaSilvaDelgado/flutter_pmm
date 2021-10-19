@@ -1,23 +1,35 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_pmm/app/features/configuracao/infra/datasources/generic_datasource.dart';
 import 'package:flutter_pmm/app/features/configuracao/infra/models/turno_model.dart';
 import 'package:flutter_pmm/app/shared/errors/errors.dart';
 import 'package:flutter_pmm/app/shared/web/get_dio.dart';
 
+part 'turno_datasource.g.dart';
+
+@Injectable(singleton: false)
 class TurnoDatasourceWeb extends GenericDatasource<TurnoModel> {
   final GetDio getDio;
   TurnoDatasourceWeb(this.getDio);
 
   @override
-  Future<List<TurnoModel>> getAllGeneric() async {
-    var data = await getDio("http://www.usinasantafe.com.br/fpmmdev/turno.php");
-    List<TurnoModel> dados =
-        List<TurnoModel>.from(data.map((data) => TurnoModel.fromJson(data)));
-    return dados;
+  Future<Either<Failure, List<TurnoModel>>> getAllGeneric() async {
+    try {
+      var data =
+          await getDio("http://www.usinasantafe.com.br/fpmmdev/turno.php");
+      return data.fold(
+          (l) => left(l),
+          (r) => r.isEmpty
+              ? left(EmptyList())
+              : right(
+                  List<TurnoModel>.from(r.map((e) => TurnoModel.fromMap(e)))));
+    } catch (e) {
+      return Left(ErrorDesconhecido());
+    }
   }
 
   @override
-  Future<Either<ErrorException, bool>> addAllGeneric(List<TurnoModel> list) {
+  Future<Either<Failure, bool>> addAllGeneric(List<TurnoModel> list) {
     throw UnimplementedError();
   }
 }

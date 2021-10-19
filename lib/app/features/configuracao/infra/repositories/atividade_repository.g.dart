@@ -7,7 +7,8 @@ part of 'atividade_repository.dart';
 // **************************************************************************
 
 final $AtividadeRepositoryImpl = BindInject(
-  (i) => AtividadeRepositoryImpl(i<AtividadeDatasourceWeb>()),
+  (i) =>
+      AtividadeRepositoryImpl(i<AtividadeDatasourceWeb>(), i<AtividadeDao>()),
   isSingleton: false,
   isLazy: true,
 );

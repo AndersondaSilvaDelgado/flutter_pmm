@@ -1,23 +1,37 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_pmm/app/features/configuracao/infra/datasources/generic_datasource.dart';
 import 'package:flutter_pmm/app/features/configuracao/infra/models/bocal_model.dart';
 import 'package:flutter_pmm/app/shared/errors/errors.dart';
+
 import 'package:flutter_pmm/app/shared/web/get_dio.dart';
 
+part 'bocal_datasource.g.dart';
+
+@Injectable(singleton: false)
 class BocalDatasourceWeb extends GenericDatasource<BocalModel> {
   final GetDio getDio;
   BocalDatasourceWeb(this.getDio);
 
   @override
-  Future<List<BocalModel>> getAllGeneric() async {
-    var data = await getDio("http://www.usinasantafe.com.br/fpmmdev/bocal.php");
-    List<BocalModel> dados =
-        List<BocalModel>.from(data.map((data) => BocalModel.fromJson(data)));
-    return dados;
+  Future<Either<Failure, List<BocalModel>>> getAllGeneric() async {
+    try {
+      var data =
+          await getDio("http://www.usinasantafe.com.br/fpmmdev/view/bocal.php");
+
+      return data.fold(
+          (l) => left(l),
+          (r) => r.isEmpty
+              ? left(EmptyList())
+              : right(
+                  List<BocalModel>.from(r.map((e) => BocalModel.fromMap(e)))));
+    } catch (e) {
+      return Left(ErrorDesconhecido());
+    }
   }
 
   @override
-  Future<Either<ErrorException, bool>> addAllGeneric(List<BocalModel> list) {
+  Future<Either<Failure, bool>> addAllGeneric(List<BocalModel> list) {
     throw UnimplementedError();
   }
 }

@@ -13,18 +13,22 @@ class AtividadeDao extends DatabaseAccessor<DataBase>
     with _$AtividadeDaoMixin, GenericDatasource<AtividadeModel> {
   AtividadeDao(DataBase db) : super(db);
 
-  Future addAtividade(AtividadeModel entity) {
+  Future<int> addAtividade(AtividadeModel entity) {
     return into(atividadeTable).insert(entity.atividadeTableData());
   }
 
   @override
-  Future<Either<ErrorException, bool>> addAllGeneric(
-      List<AtividadeModel> list) {
+  Future<Either<Failure, bool>> addAllGeneric(List list) {
+    for (AtividadeModel atividadeModel in list) {
+      var res = addAtividade(atividadeModel);
+      // ignore: avoid_print
+      print('resultado' + res.toString());
+    }
     throw UnimplementedError();
   }
 
   @override
-  Future<List<AtividadeModel>> getAllGeneric() {
+  Future<Either<Failure, List<AtividadeModel>>> getAllGeneric() {
     throw UnimplementedError();
   }
 }
