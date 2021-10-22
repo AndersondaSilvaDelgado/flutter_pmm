@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_pmm/app/features/configuracao/domain/entities/turno.dart';
+import 'package:flutter_pmm/app/shared/database/database.dart';
 
 class TurnoModel extends Turno {
   TurnoModel({
@@ -14,6 +15,13 @@ class TurnoModel extends Turno {
           nroTurno: nroTurno,
           descTurno: descTurno,
         );
+
+  TurnoTableData turnoTableData() => TurnoTableData(
+        idTurno: idTurno,
+        codTurno: codTurno,
+        nroTurno: nroTurno,
+        descTurno: descTurno,
+      );
 
   Map<String, dynamic> toMap() {
     return {

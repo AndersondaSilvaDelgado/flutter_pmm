@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_pmm/app/features/configuracao/domain/entities/r_equip_ativ.dart';
+import 'package:flutter_pmm/app/shared/database/database.dart';
 
 class REquipAtivModel extends REquipAtiv {
   REquipAtivModel({
@@ -12,6 +13,12 @@ class REquipAtivModel extends REquipAtiv {
           idEquip: idEquip,
           idAtiv: idAtiv,
         );
+
+  REquipAtivTableData rEquipAtivTableData() => REquipAtivTableData(
+        idREquipAtiv: idREquipAtiv,
+        idEquip: idEquip,
+        idAtiv: idAtiv,
+      );
 
   Map<String, dynamic> toMap() {
     return {

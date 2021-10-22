@@ -7,7 +7,7 @@ class OSTable extends Table {
   IntColumn get idLibOS => integer()();
   IntColumn get idProprAgr => integer()();
   TextColumn get descrProprAgr => text()();
-  IntColumn get areaProgrOS => integer()();
+  RealColumn get areaProgrOS => real()();
   TextColumn get dtInicProgr => text()();
   TextColumn get dtFimProgr => text()();
   IntColumn get tipoOS => integer()();

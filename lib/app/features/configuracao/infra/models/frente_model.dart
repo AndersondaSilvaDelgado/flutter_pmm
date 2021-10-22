@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_pmm/app/features/configuracao/domain/entities/frente.dart';
+import 'package:flutter_pmm/app/shared/database/database.dart';
 
 class FrenteModel extends Frente {
   FrenteModel({
@@ -12,6 +13,12 @@ class FrenteModel extends Frente {
           codFrente: codFrente,
           descrFrente: descrFrente,
         );
+
+  FrenteTableData frenteTableData() => FrenteTableData(
+        idFrente: idFrente,
+        codFrente: codFrente,
+        descrFrente: descrFrente,
+      );
 
   Map<String, dynamic> toMap() {
     return {

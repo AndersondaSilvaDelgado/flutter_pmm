@@ -7,3 +7,5 @@ class ErrorDesconhecido extends Failure {}
 class EmptyList extends Failure {}
 
 class ErroReturnRepository extends Failure {}
+
+class ErroInsertBDInternal extends Failure {}

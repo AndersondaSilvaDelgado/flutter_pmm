@@ -30,4 +30,10 @@ class OSDatasourceWeb extends GenericDatasource<OSModel> {
   Future<Either<Failure, bool>> addAllGeneric(List<OSModel> list) {
     throw UnimplementedError();
   }
+
+  @override
+  Future<int> add(OSModel entity) {
+    // TODO: implement add
+    throw UnimplementedError();
+  }
 }

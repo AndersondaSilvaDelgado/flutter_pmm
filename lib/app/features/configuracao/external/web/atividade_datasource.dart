@@ -32,4 +32,9 @@ class AtividadeDatasourceWeb extends GenericDatasource<AtividadeModel> {
   Future<Either<Failure, bool>> addAllGeneric(List<AtividadeModel> list) {
     throw UnimplementedError();
   }
+
+  @override
+  Future<int> add(AtividadeModel entity) {
+    throw UnimplementedError();
+  }
 }

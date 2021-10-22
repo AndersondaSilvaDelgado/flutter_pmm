@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_pmm/app/features/configuracao/domain/entities/leira.dart';
+import 'package:flutter_pmm/app/shared/database/database.dart';
 
 class LeiraModel extends Leira {
   LeiraModel({
@@ -12,6 +13,12 @@ class LeiraModel extends Leira {
           codLeira: codLeira,
           statusLeira: statusLeira,
         );
+
+  LeiraTableData leiraTableData() => LeiraTableData(
+        idLeira: idLeira,
+        codLeira: codLeira,
+        statusLeira: statusLeira,
+      );
 
   Map<String, dynamic> toMap() {
     return {

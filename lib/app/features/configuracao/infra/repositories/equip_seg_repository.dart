@@ -3,7 +3,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_pmm/app/features/configuracao/domain/entities/equip_seg.dart';
 import 'package:flutter_pmm/app/features/configuracao/domain/repositories/generic_repository.dart';
 import 'package:flutter_pmm/app/features/configuracao/external/web/equip_seg_datasource.dart';
-import 'package:flutter_pmm/app/features/configuracao/infra/models/equip_seg_model.dart';
 import 'package:flutter_pmm/app/shared/errors/errors.dart';
 
 part 'equip_seg_repository.g.dart';

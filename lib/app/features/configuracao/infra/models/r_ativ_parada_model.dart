@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_pmm/app/features/configuracao/domain/entities/r_ativ_parada.dart';
+import 'package:flutter_pmm/app/shared/database/database.dart';
 
 class RAtivParadaModel extends RAtivParada {
   RAtivParadaModel({
@@ -12,6 +13,12 @@ class RAtivParadaModel extends RAtivParada {
           idAtiv: idAtiv,
           idParada: idParada,
         );
+
+  RAtivParadaTableData rAtivParadaTableData() => RAtivParadaTableData(
+        idRAtivParada: idRAtivParada,
+        idAtiv: idAtiv,
+        idParada: idParada,
+      );
 
   Map<String, dynamic> toMap() {
     return {

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_pmm/app/features/configuracao/domain/entities/item_checklist.dart';
+import 'package:flutter_pmm/app/shared/database/database.dart';
 
 class ItemCheckListModel extends ItemCheckList {
   ItemCheckListModel({
@@ -12,6 +13,12 @@ class ItemCheckListModel extends ItemCheckList {
           idCheckList: idCheckList,
           descrItemCheckList: descrItemCheckList,
         );
+
+  ItemCheckListTableData itemCheckListTableData() => ItemCheckListTableData(
+        idItemCheckList: idItemCheckList,
+        idCheckList: idCheckList,
+        descrItemCheckList: descrItemCheckList,
+      );
 
   Map<String, dynamic> toMap() {
     return {

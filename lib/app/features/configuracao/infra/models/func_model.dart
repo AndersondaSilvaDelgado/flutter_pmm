@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_pmm/app/features/configuracao/domain/entities/func.dart';
+import 'package:flutter_pmm/app/shared/database/database.dart';
 
 class FuncModel extends Func {
   FuncModel({
@@ -10,6 +11,11 @@ class FuncModel extends Func {
           matricFunc: matricFunc,
           nomeFunc: nomeFunc,
         );
+
+  FuncTableData funcTableData() => FuncTableData(
+        matricFunc: matricFunc,
+        nomeFunc: nomeFunc,
+      );
 
   Map<String, dynamic> toMap() {
     return {

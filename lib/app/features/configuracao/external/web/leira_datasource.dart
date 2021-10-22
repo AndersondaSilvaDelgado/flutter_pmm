@@ -32,4 +32,10 @@ class LeiraDatasourceWeb extends GenericDatasource<LeiraModel> {
   Future<Either<Failure, bool>> addAllGeneric(List<LeiraModel> list) {
     throw UnimplementedError();
   }
+
+  @override
+  Future<int> add(LeiraModel entity) {
+    // TODO: implement add
+    throw UnimplementedError();
+  }
 }

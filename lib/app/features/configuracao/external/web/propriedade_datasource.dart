@@ -32,4 +32,10 @@ class PropriedadeDatasourceWeb extends GenericDatasource<PropriedadeModel> {
   Future<Either<Failure, bool>> addAllGeneric(List<PropriedadeModel> list) {
     throw UnimplementedError();
   }
+
+  @override
+  Future<int> add(PropriedadeModel entity) {
+    // TODO: implement add
+    throw UnimplementedError();
+  }
 }

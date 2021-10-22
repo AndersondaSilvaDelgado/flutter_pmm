@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_pmm/app/features/configuracao/domain/entities/r_os_ativ.dart';
+import 'package:flutter_pmm/app/shared/database/database.dart';
 
 class ROSAtivModel extends ROSAtiv {
   ROSAtivModel({
@@ -12,6 +13,12 @@ class ROSAtivModel extends ROSAtiv {
           nroOS: nroOS,
           idAtiv: idAtiv,
         );
+
+  ROSAtivTableData rOSAtivTableData() => ROSAtivTableData(
+        idROSAtiv: idROSAtiv,
+        nroOS: nroOS,
+        idAtiv: idAtiv,
+      );
 
   Map<String, dynamic> toMap() {
     return {

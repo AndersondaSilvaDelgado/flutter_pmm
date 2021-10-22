@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_pmm/app/features/configuracao/domain/entities/propriedade.dart';
+import 'package:flutter_pmm/app/shared/database/database.dart';
 
 class PropriedadeModel extends Propriedade {
   PropriedadeModel({
@@ -10,6 +11,11 @@ class PropriedadeModel extends Propriedade {
           idPropriedade: idPropriedade,
           descrPropriedade: descrPropriedade,
         );
+
+  PropriedadeTableData propriedadeTableData() => PropriedadeTableData(
+        idPropriedade: idPropriedade,
+        descrPropriedade: descrPropriedade,
+      );
 
   Map<String, dynamic> toMap() {
     return {

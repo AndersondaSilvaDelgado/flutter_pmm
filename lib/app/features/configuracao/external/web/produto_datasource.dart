@@ -32,4 +32,10 @@ class ProdutoDatasourceWeb extends GenericDatasource<ProdutoModel> {
   Future<Either<Failure, bool>> addAllGeneric(List<ProdutoModel> list) {
     throw UnimplementedError();
   }
+
+  @override
+  Future<int> add(ProdutoModel entity) {
+    // TODO: implement add
+    throw UnimplementedError();
+  }
 }

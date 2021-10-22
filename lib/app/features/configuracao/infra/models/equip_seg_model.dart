@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_pmm/app/features/configuracao/domain/entities/equip_seg.dart';
+import 'package:flutter_pmm/app/shared/database/database.dart';
 
 class EquipSegModel extends EquipSeg {
   EquipSegModel({
@@ -16,6 +17,14 @@ class EquipSegModel extends EquipSeg {
           descrClasseEquip: descrClasseEquip,
           tipoEquip: tipoEquip,
         );
+
+  EquipSegTableData equipSegTableData() => EquipSegTableData(
+        idEquip: idEquip,
+        nroEquip: nroEquip,
+        codClasseEquip: codClasseEquip,
+        descrClasseEquip: descrClasseEquip,
+        tipoEquip: tipoEquip,
+      );
 
   Map<String, dynamic> toMap() {
     return {

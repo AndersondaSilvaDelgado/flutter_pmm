@@ -34,4 +34,10 @@ class BocalDatasourceWeb extends GenericDatasource<BocalModel> {
   Future<Either<Failure, bool>> addAllGeneric(List<BocalModel> list) {
     throw UnimplementedError();
   }
+
+  @override
+  Future<int> add(BocalModel entity) {
+    // TODO: implement add
+    throw UnimplementedError();
+  }
 }

@@ -3,7 +3,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_pmm/app/features/configuracao/domain/entities/frente.dart';
 import 'package:flutter_pmm/app/features/configuracao/domain/repositories/generic_repository.dart';
 import 'package:flutter_pmm/app/features/configuracao/external/web/frente_datasource.dart';
-import 'package:flutter_pmm/app/features/configuracao/infra/models/frente_model.dart';
 import 'package:flutter_pmm/app/shared/errors/errors.dart';
 
 part 'frente_repository.g.dart';

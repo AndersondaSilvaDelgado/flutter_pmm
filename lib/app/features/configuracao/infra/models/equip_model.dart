@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_pmm/app/features/configuracao/domain/entities/equip.dart';
+import 'package:flutter_pmm/app/shared/database/database.dart';
 
 class EquipModel extends Equip {
   EquipModel({
@@ -28,6 +29,20 @@ class EquipModel extends Equip {
           tipoEquip: tipoEquip,
           classifEquip: classifEquip,
         );
+
+  EquipTableData equipTableData() => EquipTableData(
+        idEquip: idEquip,
+        nroEquip: nroEquip,
+        codClasseEquip: codClasseEquip,
+        descrClasseEquip: descrClasseEquip,
+        codTurno: codTurno,
+        idCheckList: idCheckList,
+        tipoEquipFert: tipoEquipFert,
+        horimetroEquip: horimetroEquip,
+        medicaoEquipFert: medicaoEquipFert,
+        tipoEquip: tipoEquip,
+        classifEquip: classifEquip,
+      );
 
   Map<String, dynamic> toMap() {
     return {

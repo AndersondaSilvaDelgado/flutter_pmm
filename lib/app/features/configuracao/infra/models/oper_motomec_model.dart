@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_pmm/app/features/configuracao/domain/entities/oper_motomec.dart';
+import 'package:flutter_pmm/app/shared/database/database.dart';
 
 class OperMotoMecModel extends OperMotoMec {
   OperMotoMecModel({
@@ -22,6 +23,17 @@ class OperMotoMecModel extends OperMotoMec {
           aplicOperMotoMec: aplicOperMotoMec,
           funcaoOperMotoMec: funcaoOperMotoMec,
         );
+
+  OperMotoMecTableData operMotoMecTableData() => OperMotoMecTableData(
+        idOperMotoMec: idOperMotoMec,
+        codOperMotoMec: codOperMotoMec,
+        descrOperMotoMec: descrOperMotoMec,
+        codFuncaoOperMotoMec: codFuncaoOperMotoMec,
+        posOperMotoMec: posOperMotoMec,
+        tipoOperMotoMec: tipoOperMotoMec,
+        aplicOperMotoMec: aplicOperMotoMec,
+        funcaoOperMotoMec: funcaoOperMotoMec,
+      );
 
   Map<String, dynamic> toMap() {
     return {

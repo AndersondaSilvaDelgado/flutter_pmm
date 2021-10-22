@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_pmm/app/features/configuracao/domain/entities/parada.dart';
+import 'package:flutter_pmm/app/shared/database/database.dart';
 
 class ParadaModel extends Parada {
   ParadaModel({
@@ -12,6 +13,12 @@ class ParadaModel extends Parada {
           codParada: codParada,
           descrParada: descrParada,
         );
+
+  ParadaTableData paradaTableData() => ParadaTableData(
+        idParada: idParada,
+        codParada: codParada,
+        descrParada: descrParada,
+      );
 
   Map<String, dynamic> toMap() {
     return {

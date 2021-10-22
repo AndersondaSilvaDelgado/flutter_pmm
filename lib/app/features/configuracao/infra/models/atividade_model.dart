@@ -14,8 +14,7 @@ class AtividadeModel extends Atividade {
           descrAtiv: descrAtiv,
         );
 
-  // ignore: unnecessary_new
-  AtividadeTableData atividadeTableData() => new AtividadeTableData(
+  AtividadeTableData atividadeTableData() => AtividadeTableData(
         idAtiv: idAtiv,
         codAtiv: codAtiv,
         descrAtiv: descrAtiv,

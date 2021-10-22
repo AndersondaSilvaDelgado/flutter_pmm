@@ -28,4 +28,10 @@ class ItemCheckListDatasourceWeb extends GenericDatasource<ItemCheckListModel> {
   Future<Either<Failure, bool>> addAllGeneric(List<ItemCheckListModel> list) {
     throw UnimplementedError();
   }
+
+  @override
+  Future<int> add(ItemCheckListModel entity) {
+    // TODO: implement add
+    throw UnimplementedError();
+  }
 }

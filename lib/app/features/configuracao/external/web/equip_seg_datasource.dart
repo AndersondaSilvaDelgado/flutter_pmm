@@ -32,4 +32,10 @@ class EquipSegDatasourceWeb extends GenericDatasource<EquipSegModel> {
   Future<Either<Failure, bool>> addAllGeneric(List<EquipSegModel> list) {
     throw UnimplementedError();
   }
+
+  @override
+  Future<int> add(EquipSegModel entity) {
+    // TODO: implement add
+    throw UnimplementedError();
+  }
 }

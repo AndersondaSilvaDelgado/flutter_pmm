@@ -8,8 +8,8 @@ class EquipTable extends Table {
   IntColumn get codTurno => integer()();
   IntColumn get idCheckList => integer()();
   IntColumn get tipoEquipFert => integer()();
-  IntColumn get horimetroEquip => integer()();
-  IntColumn get medicaoEquipFert => integer()();
+  RealColumn get horimetroEquip => real()();
+  RealColumn get medicaoEquipFert => real()();
   IntColumn get tipoEquip => integer()();
   IntColumn get classifEquip => integer()();
 }

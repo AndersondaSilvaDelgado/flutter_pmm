@@ -34,4 +34,10 @@ class RFuncaoAtivParadaDatasourceWeb
       List<RFuncaoAtivParadaModel> list) {
     throw UnimplementedError();
   }
+
+  @override
+  Future<int> add(RFuncaoAtivParadaModel entity) {
+    // TODO: implement add
+    throw UnimplementedError();
+  }
 }

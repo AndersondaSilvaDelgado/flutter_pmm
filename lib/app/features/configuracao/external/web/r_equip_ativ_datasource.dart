@@ -32,4 +32,10 @@ class REquipAtivDatasourceWeb extends GenericDatasource<REquipAtivModel> {
   Future<Either<Failure, bool>> addAllGeneric(List<REquipAtivModel> list) {
     throw UnimplementedError();
   }
+
+  @override
+  Future<int> add(REquipAtivModel entity) {
+    // TODO: implement add
+    throw UnimplementedError();
+  }
 }

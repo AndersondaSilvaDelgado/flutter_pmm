@@ -32,4 +32,10 @@ class ROSAtivDatasourceWeb extends GenericDatasource<ROSAtivModel> {
   Future<Either<Failure, bool>> addAllGeneric(List<ROSAtivModel> list) {
     throw UnimplementedError();
   }
+
+  @override
+  Future<int> add(ROSAtivModel entity) {
+    // TODO: implement add
+    throw UnimplementedError();
+  }
 }

@@ -32,4 +32,10 @@ class FrenteDatasourceWeb extends GenericDatasource<FrenteModel> {
   Future<Either<Failure, bool>> addAllGeneric(List<FrenteModel> list) {
     throw UnimplementedError();
   }
+
+  @override
+  Future<int> add(FrenteModel entity) {
+    // TODO: implement add
+    throw UnimplementedError();
+  }
 }

@@ -32,4 +32,10 @@ class FuncDatasourceWeb extends GenericDatasource<FuncModel> {
   Future<Either<Failure, bool>> addAllGeneric(List<FuncModel> list) {
     throw UnimplementedError();
   }
+
+  @override
+  Future<int> add(FuncModel entity) {
+    // TODO: implement add
+    throw UnimplementedError();
+  }
 }

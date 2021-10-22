@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_pmm/app/features/configuracao/domain/entities/produto.dart';
+import 'package:flutter_pmm/app/shared/database/database.dart';
 
 class ProdutoModel extends Produto {
   ProdutoModel({
@@ -12,6 +13,12 @@ class ProdutoModel extends Produto {
           codProduto: codProduto,
           descProduto: descProduto,
         );
+
+  ProdutoTableData produtoTableData() => ProdutoTableData(
+        idProduto: idProduto,
+        codProduto: codProduto,
+        descProduto: descProduto,
+      );
 
   Map<String, dynamic> toMap() {
     return {

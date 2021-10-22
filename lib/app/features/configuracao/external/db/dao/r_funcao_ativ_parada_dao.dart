@@ -1,0 +1,44 @@
+import 'package:dartz/dartz.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_pmm/app/features/configuracao/external/db/table/r_funcao_ativ_parada_table.dart';
+import 'package:flutter_pmm/app/features/configuracao/infra/datasources/generic_datasource.dart';
+import 'package:flutter_pmm/app/features/configuracao/infra/models/r_funcao_ativ_parada_model.dart';
+import 'package:flutter_pmm/app/shared/database/database.dart';
+import 'package:flutter_pmm/app/shared/errors/errors.dart';
+import 'package:moor_flutter/moor_flutter.dart';
+
+part 'r_funcao_ativ_parada_dao.g.dart';
+
+@Injectable(singleton: false)
+@UseDao(tables: [RFuncaoAtivParadaTable])
+class RFuncaoAtivParadaDao extends DatabaseAccessor<DataBase>
+    with
+        _$RFuncaoAtivParadaDaoMixin,
+        GenericDatasource<RFuncaoAtivParadaModel> {
+  RFuncaoAtivParadaDao(DataBase db) : super(db);
+
+  @override
+  Future<int> add(RFuncaoAtivParadaModel entity) {
+    return into(rFuncaoAtivParadaTable)
+        .insert(entity.rFuncaoAtivParadaTableData());
+  }
+
+  @override
+  Future<Either<Failure, bool>> addAllGeneric(
+      List<RFuncaoAtivParadaModel> list) async {
+    late int res;
+    for (RFuncaoAtivParadaModel model in list) {
+      res = await add(model);
+    }
+    if (list.length == res) {
+      return right(true);
+    } else {
+      return left(ErroInsertBDInternal());
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<RFuncaoAtivParadaModel>>> getAllGeneric() {
+    throw UnimplementedError();
+  }
+}

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_pmm/app/features/configuracao/domain/entities/pressao_bocal.dart';
+import 'package:flutter_pmm/app/shared/database/database.dart';
 
 class PressaoBocalModel extends PressaoBocal {
   PressaoBocalModel({
@@ -14,6 +15,13 @@ class PressaoBocalModel extends PressaoBocal {
           valorPressao: valorPressao,
           valorVeloc: valorVeloc,
         );
+
+  PressaoBocalTableData pressaoBocalTableData() => PressaoBocalTableData(
+        idPressaoBocal: idPressaoBocal,
+        idBocal: idBocal,
+        valorPressao: valorPressao,
+        valorVeloc: valorVeloc,
+      );
 
   Map<String, dynamic> toMap() {
     return {

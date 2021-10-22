@@ -954,8 +954,8 @@ class EquipTableData extends DataClass implements Insertable<EquipTableData> {
   final int codTurno;
   final int idCheckList;
   final int tipoEquipFert;
-  final int horimetroEquip;
-  final int medicaoEquipFert;
+  final double horimetroEquip;
+  final double medicaoEquipFert;
   final int tipoEquip;
   final int classifEquip;
   EquipTableData(
@@ -989,9 +989,9 @@ class EquipTableData extends DataClass implements Insertable<EquipTableData> {
           .mapFromDatabaseResponse(data['${effectivePrefix}id_check_list'])!,
       tipoEquipFert: const IntType()
           .mapFromDatabaseResponse(data['${effectivePrefix}tipo_equip_fert'])!,
-      horimetroEquip: const IntType()
+      horimetroEquip: const RealType()
           .mapFromDatabaseResponse(data['${effectivePrefix}horimetro_equip'])!,
-      medicaoEquipFert: const IntType().mapFromDatabaseResponse(
+      medicaoEquipFert: const RealType().mapFromDatabaseResponse(
           data['${effectivePrefix}medicao_equip_fert'])!,
       tipoEquip: const IntType()
           .mapFromDatabaseResponse(data['${effectivePrefix}tipo_equip'])!,
@@ -1009,8 +1009,8 @@ class EquipTableData extends DataClass implements Insertable<EquipTableData> {
     map['cod_turno'] = Variable<int>(codTurno);
     map['id_check_list'] = Variable<int>(idCheckList);
     map['tipo_equip_fert'] = Variable<int>(tipoEquipFert);
-    map['horimetro_equip'] = Variable<int>(horimetroEquip);
-    map['medicao_equip_fert'] = Variable<int>(medicaoEquipFert);
+    map['horimetro_equip'] = Variable<double>(horimetroEquip);
+    map['medicao_equip_fert'] = Variable<double>(medicaoEquipFert);
     map['tipo_equip'] = Variable<int>(tipoEquip);
     map['classif_equip'] = Variable<int>(classifEquip);
     return map;
@@ -1043,8 +1043,8 @@ class EquipTableData extends DataClass implements Insertable<EquipTableData> {
       codTurno: serializer.fromJson<int>(json['codTurno']),
       idCheckList: serializer.fromJson<int>(json['idCheckList']),
       tipoEquipFert: serializer.fromJson<int>(json['tipoEquipFert']),
-      horimetroEquip: serializer.fromJson<int>(json['horimetroEquip']),
-      medicaoEquipFert: serializer.fromJson<int>(json['medicaoEquipFert']),
+      horimetroEquip: serializer.fromJson<double>(json['horimetroEquip']),
+      medicaoEquipFert: serializer.fromJson<double>(json['medicaoEquipFert']),
       tipoEquip: serializer.fromJson<int>(json['tipoEquip']),
       classifEquip: serializer.fromJson<int>(json['classifEquip']),
     );
@@ -1060,8 +1060,8 @@ class EquipTableData extends DataClass implements Insertable<EquipTableData> {
       'codTurno': serializer.toJson<int>(codTurno),
       'idCheckList': serializer.toJson<int>(idCheckList),
       'tipoEquipFert': serializer.toJson<int>(tipoEquipFert),
-      'horimetroEquip': serializer.toJson<int>(horimetroEquip),
-      'medicaoEquipFert': serializer.toJson<int>(medicaoEquipFert),
+      'horimetroEquip': serializer.toJson<double>(horimetroEquip),
+      'medicaoEquipFert': serializer.toJson<double>(medicaoEquipFert),
       'tipoEquip': serializer.toJson<int>(tipoEquip),
       'classifEquip': serializer.toJson<int>(classifEquip),
     };
@@ -1075,8 +1075,8 @@ class EquipTableData extends DataClass implements Insertable<EquipTableData> {
           int? codTurno,
           int? idCheckList,
           int? tipoEquipFert,
-          int? horimetroEquip,
-          int? medicaoEquipFert,
+          double? horimetroEquip,
+          double? medicaoEquipFert,
           int? tipoEquip,
           int? classifEquip}) =>
       EquipTableData(
@@ -1156,8 +1156,8 @@ class EquipTableCompanion extends UpdateCompanion<EquipTableData> {
   final Value<int> codTurno;
   final Value<int> idCheckList;
   final Value<int> tipoEquipFert;
-  final Value<int> horimetroEquip;
-  final Value<int> medicaoEquipFert;
+  final Value<double> horimetroEquip;
+  final Value<double> medicaoEquipFert;
   final Value<int> tipoEquip;
   final Value<int> classifEquip;
   const EquipTableCompanion({
@@ -1181,8 +1181,8 @@ class EquipTableCompanion extends UpdateCompanion<EquipTableData> {
     required int codTurno,
     required int idCheckList,
     required int tipoEquipFert,
-    required int horimetroEquip,
-    required int medicaoEquipFert,
+    required double horimetroEquip,
+    required double medicaoEquipFert,
     required int tipoEquip,
     required int classifEquip,
   })  : idEquip = Value(idEquip),
@@ -1204,8 +1204,8 @@ class EquipTableCompanion extends UpdateCompanion<EquipTableData> {
     Expression<int>? codTurno,
     Expression<int>? idCheckList,
     Expression<int>? tipoEquipFert,
-    Expression<int>? horimetroEquip,
-    Expression<int>? medicaoEquipFert,
+    Expression<double>? horimetroEquip,
+    Expression<double>? medicaoEquipFert,
     Expression<int>? tipoEquip,
     Expression<int>? classifEquip,
   }) {
@@ -1232,8 +1232,8 @@ class EquipTableCompanion extends UpdateCompanion<EquipTableData> {
       Value<int>? codTurno,
       Value<int>? idCheckList,
       Value<int>? tipoEquipFert,
-      Value<int>? horimetroEquip,
-      Value<int>? medicaoEquipFert,
+      Value<double>? horimetroEquip,
+      Value<double>? medicaoEquipFert,
       Value<int>? tipoEquip,
       Value<int>? classifEquip}) {
     return EquipTableCompanion(
@@ -1276,10 +1276,10 @@ class EquipTableCompanion extends UpdateCompanion<EquipTableData> {
       map['tipo_equip_fert'] = Variable<int>(tipoEquipFert.value);
     }
     if (horimetroEquip.present) {
-      map['horimetro_equip'] = Variable<int>(horimetroEquip.value);
+      map['horimetro_equip'] = Variable<double>(horimetroEquip.value);
     }
     if (medicaoEquipFert.present) {
-      map['medicao_equip_fert'] = Variable<int>(medicaoEquipFert.value);
+      map['medicao_equip_fert'] = Variable<double>(medicaoEquipFert.value);
     }
     if (tipoEquip.present) {
       map['tipo_equip'] = Variable<int>(tipoEquip.value);
@@ -1348,14 +1348,14 @@ class $EquipTableTable extends EquipTable
       typeName: 'INTEGER', requiredDuringInsert: true);
   final VerificationMeta _horimetroEquipMeta =
       const VerificationMeta('horimetroEquip');
-  late final GeneratedColumn<int?> horimetroEquip = GeneratedColumn<int?>(
+  late final GeneratedColumn<double?> horimetroEquip = GeneratedColumn<double?>(
       'horimetro_equip', aliasedName, false,
-      typeName: 'INTEGER', requiredDuringInsert: true);
+      typeName: 'REAL', requiredDuringInsert: true);
   final VerificationMeta _medicaoEquipFertMeta =
       const VerificationMeta('medicaoEquipFert');
-  late final GeneratedColumn<int?> medicaoEquipFert = GeneratedColumn<int?>(
-      'medicao_equip_fert', aliasedName, false,
-      typeName: 'INTEGER', requiredDuringInsert: true);
+  late final GeneratedColumn<double?> medicaoEquipFert =
+      GeneratedColumn<double?>('medicao_equip_fert', aliasedName, false,
+          typeName: 'REAL', requiredDuringInsert: true);
   final VerificationMeta _tipoEquipMeta = const VerificationMeta('tipoEquip');
   late final GeneratedColumn<int?> tipoEquip = GeneratedColumn<int?>(
       'tipo_equip', aliasedName, false,
@@ -1702,16 +1702,15 @@ class $FrenteTableTable extends FrenteTable
   }
 }
 
-class FuncionarioTableData extends DataClass
-    implements Insertable<FuncionarioTableData> {
+class FuncTableData extends DataClass implements Insertable<FuncTableData> {
   final int matricFunc;
   final String nomeFunc;
-  FuncionarioTableData({required this.matricFunc, required this.nomeFunc});
-  factory FuncionarioTableData.fromData(
+  FuncTableData({required this.matricFunc, required this.nomeFunc});
+  factory FuncTableData.fromData(
       Map<String, dynamic> data, GeneratedDatabase db,
       {String? prefix}) {
     final effectivePrefix = prefix ?? '';
-    return FuncionarioTableData(
+    return FuncTableData(
       matricFunc: const IntType()
           .mapFromDatabaseResponse(data['${effectivePrefix}matric_func'])!,
       nomeFunc: const StringType()
@@ -1726,17 +1725,17 @@ class FuncionarioTableData extends DataClass
     return map;
   }
 
-  FuncionarioTableCompanion toCompanion(bool nullToAbsent) {
-    return FuncionarioTableCompanion(
+  FuncTableCompanion toCompanion(bool nullToAbsent) {
+    return FuncTableCompanion(
       matricFunc: Value(matricFunc),
       nomeFunc: Value(nomeFunc),
     );
   }
 
-  factory FuncionarioTableData.fromJson(Map<String, dynamic> json,
+  factory FuncTableData.fromJson(Map<String, dynamic> json,
       {ValueSerializer? serializer}) {
     serializer ??= moorRuntimeOptions.defaultSerializer;
-    return FuncionarioTableData(
+    return FuncTableData(
       matricFunc: serializer.fromJson<int>(json['matricFunc']),
       nomeFunc: serializer.fromJson<String>(json['nomeFunc']),
     );
@@ -1750,14 +1749,13 @@ class FuncionarioTableData extends DataClass
     };
   }
 
-  FuncionarioTableData copyWith({int? matricFunc, String? nomeFunc}) =>
-      FuncionarioTableData(
+  FuncTableData copyWith({int? matricFunc, String? nomeFunc}) => FuncTableData(
         matricFunc: matricFunc ?? this.matricFunc,
         nomeFunc: nomeFunc ?? this.nomeFunc,
       );
   @override
   String toString() {
-    return (StringBuffer('FuncionarioTableData(')
+    return (StringBuffer('FuncTableData(')
           ..write('matricFunc: $matricFunc, ')
           ..write('nomeFunc: $nomeFunc')
           ..write(')'))
@@ -1769,24 +1767,24 @@ class FuncionarioTableData extends DataClass
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is FuncionarioTableData &&
+      (other is FuncTableData &&
           other.matricFunc == this.matricFunc &&
           other.nomeFunc == this.nomeFunc);
 }
 
-class FuncionarioTableCompanion extends UpdateCompanion<FuncionarioTableData> {
+class FuncTableCompanion extends UpdateCompanion<FuncTableData> {
   final Value<int> matricFunc;
   final Value<String> nomeFunc;
-  const FuncionarioTableCompanion({
+  const FuncTableCompanion({
     this.matricFunc = const Value.absent(),
     this.nomeFunc = const Value.absent(),
   });
-  FuncionarioTableCompanion.insert({
+  FuncTableCompanion.insert({
     required int matricFunc,
     required String nomeFunc,
   })  : matricFunc = Value(matricFunc),
         nomeFunc = Value(nomeFunc);
-  static Insertable<FuncionarioTableData> custom({
+  static Insertable<FuncTableData> custom({
     Expression<int>? matricFunc,
     Expression<String>? nomeFunc,
   }) {
@@ -1796,9 +1794,9 @@ class FuncionarioTableCompanion extends UpdateCompanion<FuncionarioTableData> {
     });
   }
 
-  FuncionarioTableCompanion copyWith(
+  FuncTableCompanion copyWith(
       {Value<int>? matricFunc, Value<String>? nomeFunc}) {
-    return FuncionarioTableCompanion(
+    return FuncTableCompanion(
       matricFunc: matricFunc ?? this.matricFunc,
       nomeFunc: nomeFunc ?? this.nomeFunc,
     );
@@ -1818,7 +1816,7 @@ class FuncionarioTableCompanion extends UpdateCompanion<FuncionarioTableData> {
 
   @override
   String toString() {
-    return (StringBuffer('FuncionarioTableCompanion(')
+    return (StringBuffer('FuncTableCompanion(')
           ..write('matricFunc: $matricFunc, ')
           ..write('nomeFunc: $nomeFunc')
           ..write(')'))
@@ -1826,11 +1824,11 @@ class FuncionarioTableCompanion extends UpdateCompanion<FuncionarioTableData> {
   }
 }
 
-class $FuncionarioTableTable extends FuncionarioTable
-    with TableInfo<$FuncionarioTableTable, FuncionarioTableData> {
+class $FuncTableTable extends FuncTable
+    with TableInfo<$FuncTableTable, FuncTableData> {
   final GeneratedDatabase _db;
   final String? _alias;
-  $FuncionarioTableTable(this._db, [this._alias]);
+  $FuncTableTable(this._db, [this._alias]);
   final VerificationMeta _matricFuncMeta = const VerificationMeta('matricFunc');
   late final GeneratedColumn<int?> matricFunc = GeneratedColumn<int?>(
       'matric_func', aliasedName, false,
@@ -1842,12 +1840,11 @@ class $FuncionarioTableTable extends FuncionarioTable
   @override
   List<GeneratedColumn> get $columns => [matricFunc, nomeFunc];
   @override
-  String get aliasedName => _alias ?? 'funcionario_table';
+  String get aliasedName => _alias ?? 'func_table';
   @override
-  String get actualTableName => 'funcionario_table';
+  String get actualTableName => 'func_table';
   @override
-  VerificationContext validateIntegrity(
-      Insertable<FuncionarioTableData> instance,
+  VerificationContext validateIntegrity(Insertable<FuncTableData> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -1871,14 +1868,14 @@ class $FuncionarioTableTable extends FuncionarioTable
   @override
   Set<GeneratedColumn> get $primaryKey => <GeneratedColumn>{};
   @override
-  FuncionarioTableData map(Map<String, dynamic> data, {String? tablePrefix}) {
-    return FuncionarioTableData.fromData(data, _db,
+  FuncTableData map(Map<String, dynamic> data, {String? tablePrefix}) {
+    return FuncTableData.fromData(data, _db,
         prefix: tablePrefix != null ? '$tablePrefix.' : null);
   }
 
   @override
-  $FuncionarioTableTable createAlias(String alias) {
-    return $FuncionarioTableTable(_db, alias);
+  $FuncTableTable createAlias(String alias) {
+    return $FuncTableTable(_db, alias);
   }
 }
 
@@ -2770,7 +2767,7 @@ class OSTableData extends DataClass implements Insertable<OSTableData> {
   final int idLibOS;
   final int idProprAgr;
   final String descrProprAgr;
-  final int areaProgrOS;
+  final double areaProgrOS;
   final String dtInicProgr;
   final String dtFimProgr;
   final int tipoOS;
@@ -2805,7 +2802,7 @@ class OSTableData extends DataClass implements Insertable<OSTableData> {
           .mapFromDatabaseResponse(data['${effectivePrefix}id_propr_agr'])!,
       descrProprAgr: const StringType()
           .mapFromDatabaseResponse(data['${effectivePrefix}descr_propr_agr'])!,
-      areaProgrOS: const IntType()
+      areaProgrOS: const RealType()
           .mapFromDatabaseResponse(data['${effectivePrefix}area_progr_o_s'])!,
       dtInicProgr: const StringType()
           .mapFromDatabaseResponse(data['${effectivePrefix}dt_inic_progr'])!,
@@ -2828,7 +2825,7 @@ class OSTableData extends DataClass implements Insertable<OSTableData> {
     map['id_lib_o_s'] = Variable<int>(idLibOS);
     map['id_propr_agr'] = Variable<int>(idProprAgr);
     map['descr_propr_agr'] = Variable<String>(descrProprAgr);
-    map['area_progr_o_s'] = Variable<int>(areaProgrOS);
+    map['area_progr_o_s'] = Variable<double>(areaProgrOS);
     map['dt_inic_progr'] = Variable<String>(dtInicProgr);
     map['dt_fim_progr'] = Variable<String>(dtFimProgr);
     map['tipo_o_s'] = Variable<int>(tipoOS);
@@ -2864,7 +2861,7 @@ class OSTableData extends DataClass implements Insertable<OSTableData> {
       idLibOS: serializer.fromJson<int>(json['idLibOS']),
       idProprAgr: serializer.fromJson<int>(json['idProprAgr']),
       descrProprAgr: serializer.fromJson<String>(json['descrProprAgr']),
-      areaProgrOS: serializer.fromJson<int>(json['areaProgrOS']),
+      areaProgrOS: serializer.fromJson<double>(json['areaProgrOS']),
       dtInicProgr: serializer.fromJson<String>(json['dtInicProgr']),
       dtFimProgr: serializer.fromJson<String>(json['dtFimProgr']),
       tipoOS: serializer.fromJson<int>(json['tipoOS']),
@@ -2882,7 +2879,7 @@ class OSTableData extends DataClass implements Insertable<OSTableData> {
       'idLibOS': serializer.toJson<int>(idLibOS),
       'idProprAgr': serializer.toJson<int>(idProprAgr),
       'descrProprAgr': serializer.toJson<String>(descrProprAgr),
-      'areaProgrOS': serializer.toJson<int>(areaProgrOS),
+      'areaProgrOS': serializer.toJson<double>(areaProgrOS),
       'dtInicProgr': serializer.toJson<String>(dtInicProgr),
       'dtFimProgr': serializer.toJson<String>(dtFimProgr),
       'tipoOS': serializer.toJson<int>(tipoOS),
@@ -2898,7 +2895,7 @@ class OSTableData extends DataClass implements Insertable<OSTableData> {
           int? idLibOS,
           int? idProprAgr,
           String? descrProprAgr,
-          int? areaProgrOS,
+          double? areaProgrOS,
           String? dtInicProgr,
           String? dtFimProgr,
           int? tipoOS,
@@ -2985,7 +2982,7 @@ class OSTableCompanion extends UpdateCompanion<OSTableData> {
   final Value<int> idLibOS;
   final Value<int> idProprAgr;
   final Value<String> descrProprAgr;
-  final Value<int> areaProgrOS;
+  final Value<double> areaProgrOS;
   final Value<String> dtInicProgr;
   final Value<String> dtFimProgr;
   final Value<int> tipoOS;
@@ -3012,7 +3009,7 @@ class OSTableCompanion extends UpdateCompanion<OSTableData> {
     required int idLibOS,
     required int idProprAgr,
     required String descrProprAgr,
-    required int areaProgrOS,
+    required double areaProgrOS,
     required String dtInicProgr,
     required String dtFimProgr,
     required int tipoOS,
@@ -3037,7 +3034,7 @@ class OSTableCompanion extends UpdateCompanion<OSTableData> {
     Expression<int>? idLibOS,
     Expression<int>? idProprAgr,
     Expression<String>? descrProprAgr,
-    Expression<int>? areaProgrOS,
+    Expression<double>? areaProgrOS,
     Expression<String>? dtInicProgr,
     Expression<String>? dtFimProgr,
     Expression<int>? tipoOS,
@@ -3067,7 +3064,7 @@ class OSTableCompanion extends UpdateCompanion<OSTableData> {
       Value<int>? idLibOS,
       Value<int>? idProprAgr,
       Value<String>? descrProprAgr,
-      Value<int>? areaProgrOS,
+      Value<double>? areaProgrOS,
       Value<String>? dtInicProgr,
       Value<String>? dtFimProgr,
       Value<int>? tipoOS,
@@ -3111,7 +3108,7 @@ class OSTableCompanion extends UpdateCompanion<OSTableData> {
       map['descr_propr_agr'] = Variable<String>(descrProprAgr.value);
     }
     if (areaProgrOS.present) {
-      map['area_progr_o_s'] = Variable<int>(areaProgrOS.value);
+      map['area_progr_o_s'] = Variable<double>(areaProgrOS.value);
     }
     if (dtInicProgr.present) {
       map['dt_inic_progr'] = Variable<String>(dtInicProgr.value);
@@ -3182,9 +3179,9 @@ class $OSTableTable extends OSTable with TableInfo<$OSTableTable, OSTableData> {
       typeName: 'TEXT', requiredDuringInsert: true);
   final VerificationMeta _areaProgrOSMeta =
       const VerificationMeta('areaProgrOS');
-  late final GeneratedColumn<int?> areaProgrOS = GeneratedColumn<int?>(
+  late final GeneratedColumn<double?> areaProgrOS = GeneratedColumn<double?>(
       'area_progr_o_s', aliasedName, false,
-      typeName: 'INTEGER', requiredDuringInsert: true);
+      typeName: 'REAL', requiredDuringInsert: true);
   final VerificationMeta _dtInicProgrMeta =
       const VerificationMeta('dtInicProgr');
   late final GeneratedColumn<String?> dtInicProgr = GeneratedColumn<String?>(
@@ -3549,7 +3546,7 @@ class PressaoBocalTableData extends DataClass
     implements Insertable<PressaoBocalTableData> {
   final int idPressaoBocal;
   final int idBocal;
-  final int valorPressao;
+  final double valorPressao;
   final int valorVeloc;
   PressaoBocalTableData(
       {required this.idPressaoBocal,
@@ -3565,7 +3562,7 @@ class PressaoBocalTableData extends DataClass
           .mapFromDatabaseResponse(data['${effectivePrefix}id_pressao_bocal'])!,
       idBocal: const IntType()
           .mapFromDatabaseResponse(data['${effectivePrefix}id_bocal'])!,
-      valorPressao: const IntType()
+      valorPressao: const RealType()
           .mapFromDatabaseResponse(data['${effectivePrefix}valor_pressao'])!,
       valorVeloc: const IntType()
           .mapFromDatabaseResponse(data['${effectivePrefix}valor_veloc'])!,
@@ -3576,7 +3573,7 @@ class PressaoBocalTableData extends DataClass
     final map = <String, Expression>{};
     map['id_pressao_bocal'] = Variable<int>(idPressaoBocal);
     map['id_bocal'] = Variable<int>(idBocal);
-    map['valor_pressao'] = Variable<int>(valorPressao);
+    map['valor_pressao'] = Variable<double>(valorPressao);
     map['valor_veloc'] = Variable<int>(valorVeloc);
     return map;
   }
@@ -3596,7 +3593,7 @@ class PressaoBocalTableData extends DataClass
     return PressaoBocalTableData(
       idPressaoBocal: serializer.fromJson<int>(json['idPressaoBocal']),
       idBocal: serializer.fromJson<int>(json['idBocal']),
-      valorPressao: serializer.fromJson<int>(json['valorPressao']),
+      valorPressao: serializer.fromJson<double>(json['valorPressao']),
       valorVeloc: serializer.fromJson<int>(json['valorVeloc']),
     );
   }
@@ -3606,7 +3603,7 @@ class PressaoBocalTableData extends DataClass
     return <String, dynamic>{
       'idPressaoBocal': serializer.toJson<int>(idPressaoBocal),
       'idBocal': serializer.toJson<int>(idBocal),
-      'valorPressao': serializer.toJson<int>(valorPressao),
+      'valorPressao': serializer.toJson<double>(valorPressao),
       'valorVeloc': serializer.toJson<int>(valorVeloc),
     };
   }
@@ -3614,7 +3611,7 @@ class PressaoBocalTableData extends DataClass
   PressaoBocalTableData copyWith(
           {int? idPressaoBocal,
           int? idBocal,
-          int? valorPressao,
+          double? valorPressao,
           int? valorVeloc}) =>
       PressaoBocalTableData(
         idPressaoBocal: idPressaoBocal ?? this.idPressaoBocal,
@@ -3652,7 +3649,7 @@ class PressaoBocalTableCompanion
     extends UpdateCompanion<PressaoBocalTableData> {
   final Value<int> idPressaoBocal;
   final Value<int> idBocal;
-  final Value<int> valorPressao;
+  final Value<double> valorPressao;
   final Value<int> valorVeloc;
   const PressaoBocalTableCompanion({
     this.idPressaoBocal = const Value.absent(),
@@ -3663,7 +3660,7 @@ class PressaoBocalTableCompanion
   PressaoBocalTableCompanion.insert({
     required int idPressaoBocal,
     required int idBocal,
-    required int valorPressao,
+    required double valorPressao,
     required int valorVeloc,
   })  : idPressaoBocal = Value(idPressaoBocal),
         idBocal = Value(idBocal),
@@ -3672,7 +3669,7 @@ class PressaoBocalTableCompanion
   static Insertable<PressaoBocalTableData> custom({
     Expression<int>? idPressaoBocal,
     Expression<int>? idBocal,
-    Expression<int>? valorPressao,
+    Expression<double>? valorPressao,
     Expression<int>? valorVeloc,
   }) {
     return RawValuesInsertable({
@@ -3686,7 +3683,7 @@ class PressaoBocalTableCompanion
   PressaoBocalTableCompanion copyWith(
       {Value<int>? idPressaoBocal,
       Value<int>? idBocal,
-      Value<int>? valorPressao,
+      Value<double>? valorPressao,
       Value<int>? valorVeloc}) {
     return PressaoBocalTableCompanion(
       idPressaoBocal: idPressaoBocal ?? this.idPressaoBocal,
@@ -3706,7 +3703,7 @@ class PressaoBocalTableCompanion
       map['id_bocal'] = Variable<int>(idBocal.value);
     }
     if (valorPressao.present) {
-      map['valor_pressao'] = Variable<int>(valorPressao.value);
+      map['valor_pressao'] = Variable<double>(valorPressao.value);
     }
     if (valorVeloc.present) {
       map['valor_veloc'] = Variable<int>(valorVeloc.value);
@@ -3742,9 +3739,9 @@ class $PressaoBocalTableTable extends PressaoBocalTable
       typeName: 'INTEGER', requiredDuringInsert: true);
   final VerificationMeta _valorPressaoMeta =
       const VerificationMeta('valorPressao');
-  late final GeneratedColumn<int?> valorPressao = GeneratedColumn<int?>(
+  late final GeneratedColumn<double?> valorPressao = GeneratedColumn<double?>(
       'valor_pressao', aliasedName, false,
-      typeName: 'INTEGER', requiredDuringInsert: true);
+      typeName: 'REAL', requiredDuringInsert: true);
   final VerificationMeta _valorVelocMeta = const VerificationMeta('valorVeloc');
   late final GeneratedColumn<int?> valorVeloc = GeneratedColumn<int?>(
       'valor_veloc', aliasedName, false,
@@ -5385,8 +5382,7 @@ abstract class _$DataBase extends GeneratedDatabase {
   late final $EquipSegTableTable equipSegTable = $EquipSegTableTable(this);
   late final $EquipTableTable equipTable = $EquipTableTable(this);
   late final $FrenteTableTable frenteTable = $FrenteTableTable(this);
-  late final $FuncionarioTableTable funcionarioTable =
-      $FuncionarioTableTable(this);
+  late final $FuncTableTable funcTable = $FuncTableTable(this);
   late final $ItemCheckListTableTable itemCheckListTable =
       $ItemCheckListTableTable(this);
   late final $LeiraTableTable leiraTable = $LeiraTableTable(this);
@@ -5417,7 +5413,7 @@ abstract class _$DataBase extends GeneratedDatabase {
         equipSegTable,
         equipTable,
         frenteTable,
-        funcionarioTable,
+        funcTable,
         itemCheckListTable,
         leiraTable,
         operMotoMecTable,

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_pmm/app/features/configuracao/domain/entities/os.dart';
+import 'package:flutter_pmm/app/shared/database/database.dart';
 
 class OSModel extends OS {
   OSModel({
@@ -30,6 +31,21 @@ class OSModel extends OS {
           idAtiv: idAtiv,
           idAtivOS: idAtivOS,
         );
+
+  OSTableData osTableData() => OSTableData(
+        id: id,
+        idOS: idOS,
+        nroOS: nroOS,
+        idLibOS: idLibOS,
+        idProprAgr: idProprAgr,
+        descrProprAgr: descrProprAgr,
+        areaProgrOS: areaProgrOS,
+        dtInicProgr: dtInicProgr,
+        dtFimProgr: dtFimProgr,
+        tipoOS: tipoOS,
+        idAtiv: idAtiv,
+        idAtivOS: idAtivOS,
+      );
 
   Map<String, dynamic> toMap() {
     return {

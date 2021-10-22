@@ -32,4 +32,10 @@ class OperMotoMecDatasourceWeb extends GenericDatasource<OperMotoMecModel> {
   Future<Either<Failure, bool>> addAllGeneric(List<OperMotoMecModel> list) {
     throw UnimplementedError();
   }
+
+  @override
+  Future<int> add(OperMotoMecModel entity) {
+    // TODO: implement add
+    throw UnimplementedError();
+  }
 }

@@ -32,4 +32,10 @@ class ParadaDatasourceWeb extends GenericDatasource<ParadaModel> {
   Future<Either<Failure, bool>> addAllGeneric(List<ParadaModel> list) {
     throw UnimplementedError();
   }
+
+  @override
+  Future<int> add(ParadaModel entity) {
+    // TODO: implement add
+    throw UnimplementedError();
+  }
 }
