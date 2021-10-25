@@ -7,7 +7,8 @@ part of 'item_checklist_repository.dart';
 // **************************************************************************
 
 final $ItemCheckListRepositoryImpl = BindInject(
-  (i) => ItemCheckListRepositoryImpl(i<ItemCheckListDatasourceWeb>()),
+  (i) => ItemCheckListRepositoryImpl(
+      i<ItemCheckListDatasourceWeb>(), i<ItemCheckListDao>()),
   isSingleton: false,
   isLazy: true,
 );

@@ -7,7 +7,7 @@ part of 'equip_repository.dart';
 // **************************************************************************
 
 final $EquipRepositoryImpl = BindInject(
-  (i) => EquipRepositoryImpl(i<EquipDatasourceWeb>()),
+  (i) => EquipRepositoryImpl(i<EquipDatasourceWeb>(), i<EquipDao>()),
   isSingleton: false,
   isLazy: true,
 );

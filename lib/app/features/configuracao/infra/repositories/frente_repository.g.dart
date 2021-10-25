@@ -7,7 +7,7 @@ part of 'frente_repository.dart';
 // **************************************************************************
 
 final $FrenteRepositoryImpl = BindInject(
-  (i) => FrenteRepositoryImpl(i<FrenteDatasourceWeb>()),
+  (i) => FrenteRepositoryImpl(i<FrenteDatasourceWeb>(), i<FrenteDao>()),
   isSingleton: false,
   isLazy: true,
 );

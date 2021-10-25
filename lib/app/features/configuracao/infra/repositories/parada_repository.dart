@@ -2,7 +2,9 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_pmm/app/features/configuracao/domain/entities/parada.dart';
 import 'package:flutter_pmm/app/features/configuracao/domain/repositories/generic_repository.dart';
+import 'package:flutter_pmm/app/features/configuracao/external/db/dao/parada_dao.dart';
 import 'package:flutter_pmm/app/features/configuracao/external/web/parada_datasource.dart';
+import 'package:flutter_pmm/app/features/configuracao/infra/models/parada_model.dart';
 import 'package:flutter_pmm/app/shared/errors/errors.dart';
 
 part 'parada_repository.g.dart';
@@ -10,7 +12,12 @@ part 'parada_repository.g.dart';
 @Injectable(singleton: false)
 class ParadaRepositoryImpl extends GenericRepository<Parada> {
   final ParadaDatasourceWeb datasourceWeb;
-  ParadaRepositoryImpl(this.datasourceWeb);
+  final ParadaDao datasourceDataBase;
+
+  ParadaRepositoryImpl(
+    this.datasourceWeb,
+    this.datasourceDataBase,
+  );
 
   @override
   Future<Either<Failure, List<Parada>>> getAllGeneric() async {
@@ -26,8 +33,20 @@ class ParadaRepositoryImpl extends GenericRepository<Parada> {
   }
 
   @override
-  Future<Either<Failure, bool>> addAllGeneric(List<Parada> atividadeList) {
-    // TODO: implement addAllGeneric
-    throw UnimplementedError();
+  Future<Either<Failure, bool>> addAllGeneric(List<Parada> list) async {
+    try {
+      var modelList = [];
+      for (Parada entity in list) {
+        ParadaModel model = ParadaModel(
+          idParada: entity.idParada,
+          codParada: entity.codParada,
+          descrParada: entity.descrParada,
+        );
+        modelList.add(model);
+      }
+      return await datasourceDataBase.addAllGeneric(modelList);
+    } catch (e) {
+      return Left(ErroReturnRepository());
+    }
   }
 }

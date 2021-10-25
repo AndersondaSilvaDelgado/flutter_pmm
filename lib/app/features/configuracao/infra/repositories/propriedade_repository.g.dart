@@ -7,7 +7,8 @@ part of 'propriedade_repository.dart';
 // **************************************************************************
 
 final $PropriedadeRepositoryImpl = BindInject(
-  (i) => PropriedadeRepositoryImpl(i<PropriedadeDatasourceWeb>()),
+  (i) => PropriedadeRepositoryImpl(
+      i<PropriedadeDatasourceWeb>(), i<PropriedadeDao>()),
   isSingleton: false,
   isLazy: true,
 );

@@ -24,8 +24,7 @@ class RFuncaoAtivParadaDao extends DatabaseAccessor<DataBase>
   }
 
   @override
-  Future<Either<Failure, bool>> addAllGeneric(
-      List<RFuncaoAtivParadaModel> list) async {
+  Future<Either<Failure, bool>> addAllGeneric(List list) async {
     late int res;
     for (RFuncaoAtivParadaModel model in list) {
       res = await add(model);

@@ -21,8 +21,7 @@ class OperMotoMecDao extends DatabaseAccessor<DataBase>
   }
 
   @override
-  Future<Either<Failure, bool>> addAllGeneric(
-      List<OperMotoMecModel> list) async {
+  Future<Either<Failure, bool>> addAllGeneric(List list) async {
     late int res;
     for (OperMotoMecModel model in list) {
       res = await add(model);

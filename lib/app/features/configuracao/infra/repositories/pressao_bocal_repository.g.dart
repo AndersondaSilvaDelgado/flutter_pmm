@@ -7,7 +7,8 @@ part of 'pressao_bocal_repository.dart';
 // **************************************************************************
 
 final $PressaoBocalRepositoryImpl = BindInject(
-  (i) => PressaoBocalRepositoryImpl(i<PressaoBocalDatasourceWeb>()),
+  (i) => PressaoBocalRepositoryImpl(
+      i<PressaoBocalDatasourceWeb>(), i<PressaoBocalDao>()),
   isSingleton: false,
   isLazy: true,
 );

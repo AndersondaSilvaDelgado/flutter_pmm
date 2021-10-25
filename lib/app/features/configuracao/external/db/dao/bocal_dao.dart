@@ -21,7 +21,7 @@ class BocalDao extends DatabaseAccessor<DataBase>
   }
 
   @override
-  Future<Either<Failure, bool>> addAllGeneric(List<BocalModel> list) async {
+  Future<Either<Failure, bool>> addAllGeneric(List list) async {
     late int res;
     for (BocalModel model in list) {
       res = await add(model);

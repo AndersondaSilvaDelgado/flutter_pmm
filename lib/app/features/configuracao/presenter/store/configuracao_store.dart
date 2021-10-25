@@ -15,6 +15,6 @@ abstract class _ConfiguracaoStoreBase with Store {
   Future recDados() async {
     // ignore: avoid_print
     //print('teste');
-    await receberDados.receber();
+    await receberDados.receberSalvarBD();
   }
 }

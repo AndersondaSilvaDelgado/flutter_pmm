@@ -7,7 +7,7 @@ part of 'parada_repository.dart';
 // **************************************************************************
 
 final $ParadaRepositoryImpl = BindInject(
-  (i) => ParadaRepositoryImpl(i<ParadaDatasourceWeb>()),
+  (i) => ParadaRepositoryImpl(i<ParadaDatasourceWeb>(), i<ParadaDao>()),
   isSingleton: false,
   isLazy: true,
 );

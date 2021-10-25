@@ -21,7 +21,7 @@ class TurnoDao extends DatabaseAccessor<DataBase>
   }
 
   @override
-  Future<Either<Failure, bool>> addAllGeneric(List<TurnoModel> list) async {
+  Future<Either<Failure, bool>> addAllGeneric(List list) async {
     late int res;
     for (TurnoModel model in list) {
       res = await add(model);

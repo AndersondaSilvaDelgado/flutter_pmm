@@ -21,8 +21,7 @@ class REquipAtivDao extends DatabaseAccessor<DataBase>
   }
 
   @override
-  Future<Either<Failure, bool>> addAllGeneric(
-      List<REquipAtivModel> list) async {
+  Future<Either<Failure, bool>> addAllGeneric(List list) async {
     late int res;
     for (REquipAtivModel model in list) {
       res = await add(model);

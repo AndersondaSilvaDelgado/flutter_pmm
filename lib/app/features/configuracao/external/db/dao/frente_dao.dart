@@ -21,7 +21,7 @@ class FrenteDao extends DatabaseAccessor<DataBase>
   }
 
   @override
-  Future<Either<Failure, bool>> addAllGeneric(List<FrenteModel> list) async {
+  Future<Either<Failure, bool>> addAllGeneric(List list) async {
     late int res;
     for (FrenteModel model in list) {
       res = await add(model);

@@ -7,7 +7,7 @@ part of 'leira_repository.dart';
 // **************************************************************************
 
 final $LeiraRepositoryImpl = BindInject(
-  (i) => LeiraRepositoryImpl(i<LeiraDatasourceWeb>()),
+  (i) => LeiraRepositoryImpl(i<LeiraDatasourceWeb>(), i<LeiraDao>()),
   isSingleton: false,
   isLazy: true,
 );

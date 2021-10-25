@@ -7,7 +7,7 @@ part of 'turno_repository.dart';
 // **************************************************************************
 
 final $TurnoRepositoryImpl = BindInject(
-  (i) => TurnoRepositoryImpl(i<TurnoDatasourceWeb>()),
+  (i) => TurnoRepositoryImpl(i<TurnoDatasourceWeb>(), i<TurnoDao>()),
   isSingleton: false,
   isLazy: true,
 );

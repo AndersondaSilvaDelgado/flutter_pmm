@@ -7,7 +7,7 @@ part of 'func_repository.dart';
 // **************************************************************************
 
 final $FuncRepositoryImpl = BindInject(
-  (i) => FuncRepositoryImpl(i<FuncDatasourceWeb>()),
+  (i) => FuncRepositoryImpl(i<FuncDatasourceWeb>(), i<FuncDao>()),
   isSingleton: false,
   isLazy: true,
 );

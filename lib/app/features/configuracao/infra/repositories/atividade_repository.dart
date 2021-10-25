@@ -14,6 +14,7 @@ part 'atividade_repository.g.dart';
 class AtividadeRepositoryImpl extends GenericRepository<Atividade> {
   final AtividadeDatasourceWeb datasourceWeb;
   final AtividadeDao datasourceDataBase;
+
   AtividadeRepositoryImpl(
     this.datasourceWeb,
     this.datasourceDataBase,
@@ -33,20 +34,18 @@ class AtividadeRepositoryImpl extends GenericRepository<Atividade> {
   }
 
   @override
-  Future<Either<Failure, bool>> addAllGeneric(
-      List<Atividade> atividadeList) async {
+  Future<Either<Failure, bool>> addAllGeneric(List<Atividade> list) async {
     try {
-      var atividadeModelList = [];
-      for (Atividade atividade in atividadeList) {
+      var modelList = [];
+      for (Atividade entity in list) {
         AtividadeModel model = AtividadeModel(
-          idAtiv: atividade.idAtiv,
-          codAtiv: atividade.codAtiv,
-          descrAtiv: atividade.descrAtiv,
+          idAtiv: entity.idAtiv,
+          codAtiv: entity.codAtiv,
+          descrAtiv: entity.descrAtiv,
         );
-        atividadeModelList.add(model);
+        modelList.add(model);
       }
-      await datasourceDataBase.addAllGeneric(atividadeModelList);
-      return const Right(true);
+      return await datasourceDataBase.addAllGeneric(modelList);
     } catch (e) {
       return Left(ErroReturnRepository());
     }

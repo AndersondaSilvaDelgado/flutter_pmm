@@ -21,7 +21,7 @@ class ProdutoDao extends DatabaseAccessor<DataBase>
   }
 
   @override
-  Future<Either<Failure, bool>> addAllGeneric(List<ProdutoModel> list) async {
+  Future<Either<Failure, bool>> addAllGeneric(List list) async {
     late int res;
     for (ProdutoModel model in list) {
       res = await add(model);

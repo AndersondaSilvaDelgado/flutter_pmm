@@ -17,11 +17,11 @@ class OSDao extends DatabaseAccessor<DataBase>
 
   @override
   Future<int> add(OSModel entity) {
-    return into(osTable).insert(entity.osTableData());
+    return into(oSTable).insert(entity.osTableData());
   }
 
   @override
-  Future<Either<Failure, bool>> addAllGeneric(List<OSModel> list) async {
+  Future<Either<Failure, bool>> addAllGeneric(List list) async {
     late int res;
     for (OSModel model in list) {
       res = await add(model);

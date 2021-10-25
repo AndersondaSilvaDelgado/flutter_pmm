@@ -7,7 +7,7 @@ part of 'produto_repository.dart';
 // **************************************************************************
 
 final $ProdutoRepositoryImpl = BindInject(
-  (i) => ProdutoRepositoryImpl(i<ProdutoDatasourceWeb>()),
+  (i) => ProdutoRepositoryImpl(i<ProdutoDatasourceWeb>(), i<ProdutoDao>()),
   isSingleton: false,
   isLazy: true,
 );

@@ -7,7 +7,7 @@ part of 'bocal_repository.dart';
 // **************************************************************************
 
 final $BocalRepositoryImpl = BindInject(
-  (i) => BocalRepositoryImpl(i<BocalDatasourceWeb>()),
+  (i) => BocalRepositoryImpl(i<BocalDatasourceWeb>(), i<BocalDao>()),
   isSingleton: false,
   isLazy: true,
 );

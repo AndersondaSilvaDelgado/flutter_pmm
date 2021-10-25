@@ -9,3 +9,5 @@ class EmptyList extends Failure {}
 class ErroReturnRepository extends Failure {}
 
 class ErroInsertBDInternal extends Failure {}
+
+class ErroFinalWebBD extends Failure {}

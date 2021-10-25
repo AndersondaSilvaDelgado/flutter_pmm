@@ -7,7 +7,7 @@ part of 'r_os_ativ_repository.dart';
 // **************************************************************************
 
 final $ROSAtivRepositoryImpl = BindInject(
-  (i) => ROSAtivRepositoryImpl(i<ROSAtivDatasourceWeb>()),
+  (i) => ROSAtivRepositoryImpl(i<ROSAtivDatasourceWeb>(), i<ROSAtivDao>()),
   isSingleton: false,
   isLazy: true,
 );

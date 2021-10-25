@@ -7,7 +7,8 @@ part of 'oper_motomec_repository.dart';
 // **************************************************************************
 
 final $OperMotoMecRepositoryImpl = BindInject(
-  (i) => OperMotoMecRepositoryImpl(i<OperMotoMecDatasourceWeb>()),
+  (i) => OperMotoMecRepositoryImpl(
+      i<OperMotoMecDatasourceWeb>(), i<OperMotoMecDao>()),
   isSingleton: false,
   isLazy: true,
 );

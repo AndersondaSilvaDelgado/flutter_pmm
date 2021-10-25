@@ -17,5 +17,5 @@ final $OSDao = BindInject(
 // **************************************************************************
 
 mixin _$OSDaoMixin on DatabaseAccessor<DataBase> {
-  $OSTableTable get osTable => attachedDatabase.oSTable;
+  $OSTableTable get oSTable => attachedDatabase.oSTable;
 }

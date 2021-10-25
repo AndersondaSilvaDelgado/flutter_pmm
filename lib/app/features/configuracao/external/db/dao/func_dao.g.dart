@@ -6,7 +6,7 @@ part of 'func_dao.dart';
 // InjectionGenerator
 // **************************************************************************
 
-final $Func = BindInject(
+final $FuncDao = BindInject(
   (i) => FuncDao(i<DataBase>()),
   isSingleton: false,
   isLazy: true,

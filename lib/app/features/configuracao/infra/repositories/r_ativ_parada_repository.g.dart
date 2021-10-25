@@ -7,7 +7,8 @@ part of 'r_ativ_parada_repository.dart';
 // **************************************************************************
 
 final $RAtivParadaRepositoryImpl = BindInject(
-  (i) => RAtivParadaRepositoryImpl(i<RAtivParadaDatasourceWeb>()),
+  (i) => RAtivParadaRepositoryImpl(
+      i<RAtivParadaDatasourceWeb>(), i<RAtivParadaDao>()),
   isSingleton: false,
   isLazy: true,
 );

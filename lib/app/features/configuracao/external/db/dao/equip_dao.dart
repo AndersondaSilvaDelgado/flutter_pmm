@@ -21,7 +21,7 @@ class EquipDao extends DatabaseAccessor<DataBase>
   }
 
   @override
-  Future<Either<Failure, bool>> addAllGeneric(List<EquipModel> list) async {
+  Future<Either<Failure, bool>> addAllGeneric(List list) async {
     late int res;
     for (EquipModel model in list) {
       res = await add(model);

@@ -21,7 +21,7 @@ class FuncDao extends DatabaseAccessor<DataBase>
   }
 
   @override
-  Future<Either<Failure, bool>> addAllGeneric(List<FuncModel> list) async {
+  Future<Either<Failure, bool>> addAllGeneric(List list) async {
     late int res;
     for (FuncModel model in list) {
       res = await add(model);

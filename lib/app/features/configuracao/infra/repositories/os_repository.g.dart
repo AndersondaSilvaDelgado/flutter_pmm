@@ -7,7 +7,7 @@ part of 'os_repository.dart';
 // **************************************************************************
 
 final $OSRepositoryImpl = BindInject(
-  (i) => OSRepositoryImpl(i<OSDatasourceWeb>()),
+  (i) => OSRepositoryImpl(i<OSDatasourceWeb>(), i<OSDao>()),
   isSingleton: false,
   isLazy: true,
 );

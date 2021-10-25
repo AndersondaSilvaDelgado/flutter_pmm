@@ -7,7 +7,8 @@ part of 'r_equip_ativ_repository.dart';
 // **************************************************************************
 
 final $REquipAtivRepositoryImpl = BindInject(
-  (i) => REquipAtivRepositoryImpl(i<REquipAtivDatasourceWeb>()),
+  (i) => REquipAtivRepositoryImpl(
+      i<REquipAtivDatasourceWeb>(), i<REquipAtivDao>()),
   isSingleton: false,
   isLazy: true,
 );
