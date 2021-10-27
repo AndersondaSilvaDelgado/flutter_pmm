@@ -25,10 +25,10 @@ class FuncRepositoryImpl extends GenericRepository<Func> {
       var data = await datasourceWeb.getAllGeneric();
       return data.fold(
         (l) => left(l),
-        (r) => right(r),
+        (r) => right(List<FuncModel>.from(r.map((e) => FuncModel.fromMap(e)))),
       );
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 
@@ -45,7 +45,7 @@ class FuncRepositoryImpl extends GenericRepository<Func> {
       }
       return await datasourceDataBase.addAllGeneric(modelList);
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 }

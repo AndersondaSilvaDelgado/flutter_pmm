@@ -29,7 +29,7 @@ class ParadaDao extends DatabaseAccessor<DataBase>
     if (list.length == res) {
       return right(true);
     } else {
-      return left(ErroInsertBDInternal());
+      return left(ErrorInsertBDInternal());
     }
   }
 

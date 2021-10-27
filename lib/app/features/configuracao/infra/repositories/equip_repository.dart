@@ -25,10 +25,11 @@ class EquipRepositoryImpl extends GenericRepository<Equip> {
       var data = await datasourceWeb.getAllGeneric();
       return data.fold(
         (l) => left(l),
-        (r) => right(r),
+        (r) =>
+            right(List<EquipModel>.from(r.map((e) => EquipModel.fromMap(e)))),
       );
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 
@@ -54,7 +55,7 @@ class EquipRepositoryImpl extends GenericRepository<Equip> {
       }
       return await datasourceDataBase.addAllGeneric(modelList);
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 }

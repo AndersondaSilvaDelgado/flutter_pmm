@@ -13,15 +13,13 @@ class ItemCheckListDatasourceWeb extends GenericDatasource<ItemCheckListModel> {
   ItemCheckListDatasourceWeb(this.getDio);
 
   @override
-  Future<Either<Failure, List<ItemCheckListModel>>> getAllGeneric() async {
+  Future<Either<Failure, List>> getAllGeneric() async {
     var data = await getDio(
-        "http://www.usinasantafe.com.br/fpmmdev/itemchecklist.php");
+        "http://www.usinasantafe.com.br/pmm_api_dev/view/itemchecklist.php");
     return data.fold(
-        (l) => left(l),
-        (r) => r.isEmpty
-            ? left(EmptyList())
-            : right(List<ItemCheckListModel>.from(
-                r.map((e) => ItemCheckListModel.fromMap(e)))));
+      (l) => left(l),
+      (r) => r.isEmpty ? left(EmptyList()) : right(r),
+    );
   }
 
   @override
@@ -31,7 +29,6 @@ class ItemCheckListDatasourceWeb extends GenericDatasource<ItemCheckListModel> {
 
   @override
   Future<int> add(ItemCheckListModel entity) {
-    // TODO: implement add
     throw UnimplementedError();
   }
 }

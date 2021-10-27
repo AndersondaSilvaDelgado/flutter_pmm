@@ -13,19 +13,13 @@ class REquipAtivDatasourceWeb extends GenericDatasource<REquipAtivModel> {
   REquipAtivDatasourceWeb(this.getDio);
 
   @override
-  Future<Either<Failure, List<REquipAtivModel>>> getAllGeneric() async {
-    try {
-      var data =
-          await getDio("http://www.usinasantafe.com.br/fpmmdev/requipativ.php");
-      return data.fold(
-          (l) => left(l),
-          (r) => r.isEmpty
-              ? left(EmptyList())
-              : right(List<REquipAtivModel>.from(
-                  r.map((e) => REquipAtivModel.fromMap(e)))));
-    } catch (e) {
-      return Left(ErrorDesconhecido());
-    }
+  Future<Either<Failure, List>> getAllGeneric() async {
+    var data = await getDio(
+        "http://www.usinasantafe.com.br/pmm_api_dev/view/requipativ.php");
+    return data.fold(
+      (l) => left(l),
+      (r) => r.isEmpty ? left(EmptyList()) : right(r),
+    );
   }
 
   @override

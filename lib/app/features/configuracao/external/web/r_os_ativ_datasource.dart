@@ -13,19 +13,13 @@ class ROSAtivDatasourceWeb extends GenericDatasource<ROSAtivModel> {
   ROSAtivDatasourceWeb(this.getDio);
 
   @override
-  Future<Either<Failure, List<ROSAtivModel>>> getAllGeneric() async {
-    try {
-      var data =
-          await getDio("http://www.usinasantafe.com.br/fpmmdev/rosativ.php");
-      return data.fold(
-          (l) => left(l),
-          (r) => r.isEmpty
-              ? left(EmptyList())
-              : right(List<ROSAtivModel>.from(
-                  r.map((e) => ROSAtivModel.fromMap(e)))));
-    } catch (e) {
-      return Left(ErrorDesconhecido());
-    }
+  Future<Either<Failure, List>> getAllGeneric() async {
+    var data = await getDio(
+        "http://www.usinasantafe.com.br/pmm_api_dev/view/rosativ.php");
+    return data.fold(
+      (l) => left(l),
+      (r) => r.isEmpty ? left(EmptyList()) : right(r),
+    );
   }
 
   @override

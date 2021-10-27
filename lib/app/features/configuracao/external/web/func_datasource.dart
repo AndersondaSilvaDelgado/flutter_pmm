@@ -13,19 +13,13 @@ class FuncDatasourceWeb extends GenericDatasource<FuncModel> {
   FuncDatasourceWeb(this.getDio);
 
   @override
-  Future<Either<Failure, List<FuncModel>>> getAllGeneric() async {
-    try {
-      var data = await getDio(
-          "http://www.usinasantafe.com.br/fpmmdev/funcionario.php");
-      return data.fold(
-          (l) => left(l),
-          (r) => r.isEmpty
-              ? left(EmptyList())
-              : right(
-                  List<FuncModel>.from(r.map((e) => FuncModel.fromMap(e)))));
-    } catch (e) {
-      return Left(ErrorDesconhecido());
-    }
+  Future<Either<Failure, List>> getAllGeneric() async {
+    var data = await getDio(
+        "http://www.usinasantafe.com.br/pmm_api_dev/view/func.php");
+    return data.fold(
+      (l) => left(l),
+      (r) => r.isEmpty ? left(EmptyList()) : right(r),
+    );
   }
 
   @override

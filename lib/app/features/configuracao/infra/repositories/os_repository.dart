@@ -25,10 +25,10 @@ class OSRepositoryImpl extends GenericRepository<OS> {
       var data = await datasourceWeb.getAllGeneric();
       return data.fold(
         (l) => left(l),
-        (r) => right(r),
+        (r) => right(List<OSModel>.from(r.map((e) => OSModel.fromMap(e)))),
       );
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 
@@ -55,7 +55,7 @@ class OSRepositoryImpl extends GenericRepository<OS> {
       }
       return await datasourceDataBase.addAllGeneric(modelList);
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 }

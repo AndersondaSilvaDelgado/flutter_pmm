@@ -26,10 +26,11 @@ class AtividadeRepositoryImpl extends GenericRepository<Atividade> {
       var data = await datasourceWeb.getAllGeneric();
       return data.fold(
         (l) => left(l),
-        (r) => right(r),
+        (r) => right(
+            List<AtividadeModel>.from(r.map((e) => AtividadeModel.fromMap(e)))),
       );
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 
@@ -47,7 +48,7 @@ class AtividadeRepositoryImpl extends GenericRepository<Atividade> {
       }
       return await datasourceDataBase.addAllGeneric(modelList);
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 }

@@ -25,10 +25,11 @@ class LeiraRepositoryImpl extends GenericRepository<Leira> {
       var data = await datasourceWeb.getAllGeneric();
       return data.fold(
         (l) => left(l),
-        (r) => right(r),
+        (r) =>
+            right(List<LeiraModel>.from(r.map((e) => LeiraModel.fromMap(e)))),
       );
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 
@@ -46,7 +47,7 @@ class LeiraRepositoryImpl extends GenericRepository<Leira> {
       }
       return await datasourceDataBase.addAllGeneric(modelList);
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 }

@@ -40,6 +40,24 @@ import 'package:flutter_pmm/app/features/configuracao/external/web/r_funcao_ativ
 import 'package:flutter_pmm/app/features/configuracao/external/web/r_os_ativ_datasource.dart';
 import 'package:flutter_pmm/app/features/configuracao/external/web/turno_datasource.dart';
 import 'package:flutter_pmm/app/features/configuracao/infra/repositories/atividade_repository.dart';
+import 'package:flutter_pmm/app/features/configuracao/infra/repositories/bocal_repository.dart';
+import 'package:flutter_pmm/app/features/configuracao/infra/repositories/equip_repository.dart';
+import 'package:flutter_pmm/app/features/configuracao/infra/repositories/equip_seg_repository.dart';
+import 'package:flutter_pmm/app/features/configuracao/infra/repositories/frente_repository.dart';
+import 'package:flutter_pmm/app/features/configuracao/infra/repositories/func_repository.dart';
+import 'package:flutter_pmm/app/features/configuracao/infra/repositories/item_checklist_repository.dart';
+import 'package:flutter_pmm/app/features/configuracao/infra/repositories/leira_repository.dart';
+import 'package:flutter_pmm/app/features/configuracao/infra/repositories/oper_motomec_repository.dart';
+import 'package:flutter_pmm/app/features/configuracao/infra/repositories/os_repository.dart';
+import 'package:flutter_pmm/app/features/configuracao/infra/repositories/parada_repository.dart';
+import 'package:flutter_pmm/app/features/configuracao/infra/repositories/pressao_bocal_repository.dart';
+import 'package:flutter_pmm/app/features/configuracao/infra/repositories/produto_repository.dart';
+import 'package:flutter_pmm/app/features/configuracao/infra/repositories/propriedade_repository.dart';
+import 'package:flutter_pmm/app/features/configuracao/infra/repositories/r_ativ_parada_repository.dart';
+import 'package:flutter_pmm/app/features/configuracao/infra/repositories/r_equip_ativ_repository.dart';
+import 'package:flutter_pmm/app/features/configuracao/infra/repositories/r_funcao_ativ_parada_repository.dart';
+import 'package:flutter_pmm/app/features/configuracao/infra/repositories/r_os_ativ_repository.dart';
+import 'package:flutter_pmm/app/features/configuracao/infra/repositories/turno_repository.dart';
 import 'package:flutter_pmm/app/features/configuracao/presenter/page/configuracao_page.dart';
 import 'package:flutter_pmm/app/features/configuracao/presenter/page/menu_inicial_page.dart';
 import 'package:flutter_pmm/app/features/configuracao/presenter/page/senha_page.dart';
@@ -53,45 +71,63 @@ class ConfiguracaoModule extends Module {
     Bind((i) => Dio()),
     Bind((i) => DataBase.instance),
     $GetDio,
-    $AtividadeRepositoryImpl,
     $ReceberSalvarBDUsecasesImpl,
     $ConfiguracaoStore,
+    $AtividadeRepositoryImpl,
     $AtividadeDatasourceWeb,
     $AtividadeDao,
+    $BocalRepositoryImpl,
     $BocalDatasourceWeb,
     $BocalDao,
+    $EquipSegRepositoryImpl,
     $EquipSegDatasourceWeb,
     $EquipSegDao,
+    $EquipRepositoryImpl,
     $EquipDatasourceWeb,
     $EquipDao,
+    $FrenteRepositoryImpl,
     $FrenteDatasourceWeb,
     $FrenteDao,
+    $FuncRepositoryImpl,
     $FuncDatasourceWeb,
     $FuncDao,
+    $ItemCheckListRepositoryImpl,
     $ItemCheckListDatasourceWeb,
     $ItemCheckListDao,
+    $LeiraRepositoryImpl,
     $LeiraDatasourceWeb,
     $LeiraDao,
+    $OperMotoMecRepositoryImpl,
     $OperMotoMecDatasourceWeb,
     $OperMotoMecDao,
+    $OSRepositoryImpl,
     $OSDatasourceWeb,
     $OSDao,
+    $ParadaRepositoryImpl,
     $ParadaDatasourceWeb,
     $ParadaDao,
+    $PressaoBocalRepositoryImpl,
     $PressaoBocalDatasourceWeb,
     $PressaoBocalDao,
+    $ProdutoRepositoryImpl,
     $ProdutoDatasourceWeb,
     $ProdutoDao,
+    $PropriedadeRepositoryImpl,
     $PropriedadeDatasourceWeb,
     $PropriedadeDao,
+    $RAtivParadaRepositoryImpl,
     $RAtivParadaDatasourceWeb,
     $RAtivParadaDao,
+    $REquipAtivRepositoryImpl,
     $REquipAtivDatasourceWeb,
     $REquipAtivDao,
+    $RFuncaoAtivParadaRepositoryImpl,
     $RFuncaoAtivParadaDatasourceWeb,
     $RFuncaoAtivParadaDao,
+    $ROSAtivRepositoryImpl,
     $ROSAtivDatasourceWeb,
     $ROSAtivDao,
+    $TurnoRepositoryImpl,
     $TurnoDatasourceWeb,
     $TurnoDao,
   ];

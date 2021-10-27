@@ -47,20 +47,33 @@ class _SenhaPageState extends State<SenhaPage> {
               right: 8.0,
             ),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                ElevatedButton(
-                  onPressed: () {
-                    Modular.to.navigate('/configuracao');
-                  },
-                  child: const Text('OK'),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      right: 2.0,
+                    ),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Modular.to.navigate('/configuracao');
+                      },
+                      child: const Text('OK'),
+                    ),
+                  ),
                 ),
-                const SizedBox(width: 5),
-                ElevatedButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {}
-                  },
-                  child: const Text('RETORNAR'),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      left: 2.0,
+                    ),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {}
+                      },
+                      child: const Text('RETORNAR'),
+                    ),
+                  ),
                 ),
               ],
             ),

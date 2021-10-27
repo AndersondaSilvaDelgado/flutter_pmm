@@ -74,79 +74,59 @@ class ReceberSalvarBDUsecasesImpl {
   Future<Either<Failure, bool>> receberSalvarBD() async {
     var res = await receberSalvarAtividade();
     if (res.isLeft()) {
-      return left(ErroFinalWebBD());
+      return left(ErrorFinalWebBD());
     } else {
       res = await receberSalvarBocal();
       if (res.isLeft()) {
-        return left(ErroFinalWebBD());
+        return left(ErrorFinalWebBD());
       } else {
-        res = await receberSalvarEquip();
+        res = await receberSalvarEquipSeg();
         if (res.isLeft()) {
-          return left(ErroFinalWebBD());
+          return left(ErrorFinalWebBD());
         } else {
           res = await receberSalvarFrente();
           if (res.isLeft()) {
-            return left(ErroFinalWebBD());
+            return left(ErrorFinalWebBD());
           } else {
             res = await receberSalvarFunc();
             if (res.isLeft()) {
-              return left(ErroFinalWebBD());
+              return left(ErrorFinalWebBD());
             } else {
-              res = await receberSalvarItemCheckList();
+              res = await receberSalvarLeira();
               if (res.isLeft()) {
-                return left(ErroFinalWebBD());
+                return left(ErrorFinalWebBD());
               } else {
-                res = await receberSalvarLeira();
+                res = await receberSalvarOS();
                 if (res.isLeft()) {
-                  return left(ErroFinalWebBD());
+                  return left(ErrorFinalWebBD());
                 } else {
-                  res = await receberSalvarOperMotoMec();
+                  res = await receberSalvarParada();
                   if (res.isLeft()) {
-                    return left(ErroFinalWebBD());
+                    return left(ErrorFinalWebBD());
                   } else {
-                    res = await receberSalvarOS();
+                    res = await receberSalvarPressaoBocal();
                     if (res.isLeft()) {
-                      return left(ErroFinalWebBD());
+                      return left(ErrorFinalWebBD());
                     } else {
-                      res = await receberSalvarParada();
+                      res = await receberSalvarProduto();
                       if (res.isLeft()) {
-                        return left(ErroFinalWebBD());
+                        return left(ErrorFinalWebBD());
                       } else {
-                        res = await receberSalvarPressaoBocal();
+                        res = await receberSalvarPropriedade();
                         if (res.isLeft()) {
-                          return left(ErroFinalWebBD());
+                          return left(ErrorFinalWebBD());
                         } else {
-                          res = await receberSalvarProduto();
+                          res = await receberSalvarRAtivParada();
                           if (res.isLeft()) {
-                            return left(ErroFinalWebBD());
+                            return left(ErrorFinalWebBD());
                           } else {
-                            res = await receberSalvarPropriedade();
+                            res = await receberSalvarRFuncaoAtivParada();
                             if (res.isLeft()) {
-                              return left(ErroFinalWebBD());
+                              return left(ErrorFinalWebBD());
                             } else {
-                              res = await receberSalvarRAtivParada();
+                              res = await receberSalvarTurno();
                               if (res.isLeft()) {
-                                return left(ErroFinalWebBD());
-                              } else {
-                                res = await receberSalvarREquipAtiv();
-                                if (res.isLeft()) {
-                                  return left(ErroFinalWebBD());
-                                } else {
-                                  res = await receberSalvarRFuncaoAtivParada();
-                                  if (res.isLeft()) {
-                                    return left(ErroFinalWebBD());
-                                  } else {
-                                    res = await receberSalvarROSAtiv();
-                                    if (res.isLeft()) {
-                                      return left(ErroFinalWebBD());
-                                    } else {
-                                      res = await receberSalvarTurno();
-                                      if (res.isLeft()) {
-                                        return left(ErroFinalWebBD());
-                                      }
-                                    }
-                                  }
-                                }
+                                return left(ErrorFinalWebBD());
                               }
                             }
                           }

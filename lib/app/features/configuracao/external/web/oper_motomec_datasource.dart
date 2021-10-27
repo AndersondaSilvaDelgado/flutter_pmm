@@ -13,19 +13,13 @@ class OperMotoMecDatasourceWeb extends GenericDatasource<OperMotoMecModel> {
   OperMotoMecDatasourceWeb(this.getDio);
 
   @override
-  Future<Either<Failure, List<OperMotoMecModel>>> getAllGeneric() async {
-    try {
-      var data = await getDio(
-          "http://www.usinasantafe.com.br/fpmmdev/opermotomec.php");
-      return data.fold(
-          (l) => left(l),
-          (r) => r.isEmpty
-              ? left(EmptyList())
-              : right(List<OperMotoMecModel>.from(
-                  r.map((e) => OperMotoMecModel.fromMap(e)))));
-    } catch (e) {
-      return Left(ErrorDesconhecido());
-    }
+  Future<Either<Failure, List>> getAllGeneric() async {
+    var data = await getDio(
+        "http://www.usinasantafe.com.br/pmm_api_dev/view/opermotomec.php");
+    return data.fold(
+      (l) => left(l),
+      (r) => r.isEmpty ? left(EmptyList()) : right(r),
+    );
   }
 
   @override

@@ -25,10 +25,11 @@ class ProdutoRepositoryImpl extends GenericRepository<Produto> {
       var data = await datasourceWeb.getAllGeneric();
       return data.fold(
         (l) => left(l),
-        (r) => right(r),
+        (r) => right(
+            List<ProdutoModel>.from(r.map((e) => ProdutoModel.fromMap(e)))),
       );
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 
@@ -46,7 +47,7 @@ class ProdutoRepositoryImpl extends GenericRepository<Produto> {
       }
       return await datasourceDataBase.addAllGeneric(modelList);
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 }

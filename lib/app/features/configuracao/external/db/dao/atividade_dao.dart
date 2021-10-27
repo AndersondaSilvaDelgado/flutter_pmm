@@ -23,13 +23,22 @@ class AtividadeDao extends DatabaseAccessor<DataBase>
   @override
   Future<Either<Failure, bool>> addAllGeneric(List list) async {
     late int res;
+    // ignore: avoid_print
+    print("chegou aki 7");
     for (AtividadeModel model in list) {
       res = await add(model);
     }
+
+    var qtde = list.length;
+    // ignore: avoid_print
+    print("qtde = $qtde");
+    // ignore: avoid_print
+    print("qtde = $res");
+
     if (list.length == res) {
       return right(true);
     } else {
-      return left(ErroInsertBDInternal());
+      return left(ErrorInsertBDInternal());
     }
   }
 

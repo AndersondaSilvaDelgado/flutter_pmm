@@ -13,19 +13,13 @@ class AtividadeDatasourceWeb extends GenericDatasource<AtividadeModel> {
   AtividadeDatasourceWeb(this.getDio);
 
   @override
-  Future<Either<Failure, List<AtividadeModel>>> getAllGeneric() async {
-    try {
-      var data = await getDio(
-          "http://www.usinasantafe.com.br/fpmmdev/view/atividade.php");
-      return data.fold(
-          (l) => left(l),
-          (r) => r.isEmpty
-              ? left(EmptyList())
-              : right(List<AtividadeModel>.from(
-                  r.map((e) => AtividadeModel.fromMap(e)))));
-    } catch (e) {
-      return Left(ErrorDesconhecido());
-    }
+  Future<Either<Failure, List>> getAllGeneric() async {
+    var data = await getDio(
+        "http://www.usinasantafe.com.br/pmm_api_dev/view/atividade.php");
+    return data.fold(
+      (l) => left(l),
+      (r) => r.isEmpty ? left(ErrorRetEmptyListWS()) : right(r),
+    );
   }
 
   @override

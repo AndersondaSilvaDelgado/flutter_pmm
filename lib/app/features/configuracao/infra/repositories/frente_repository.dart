@@ -25,10 +25,11 @@ class FrenteRepositoryImpl extends GenericRepository<Frente> {
       var data = await datasourceWeb.getAllGeneric();
       return data.fold(
         (l) => left(l),
-        (r) => right(r),
+        (r) =>
+            right(List<FrenteModel>.from(r.map((e) => FrenteModel.fromMap(e)))),
       );
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 
@@ -46,7 +47,7 @@ class FrenteRepositoryImpl extends GenericRepository<Frente> {
       }
       return await datasourceDataBase.addAllGeneric(modelList);
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 }

@@ -13,17 +13,13 @@ class OSDatasourceWeb extends GenericDatasource<OSModel> {
   OSDatasourceWeb(this.getDio);
 
   @override
-  Future<Either<Failure, List<OSModel>>> getAllGeneric() async {
-    try {
-      var data = await getDio("http://www.usinasantafe.com.br/fpmmdev/os.php");
-      return data.fold(
-          (l) => left(l),
-          (r) => r.isEmpty
-              ? left(EmptyList())
-              : right(List<OSModel>.from(r.map((e) => OSModel.fromMap(e)))));
-    } catch (e) {
-      return Left(ErrorDesconhecido());
-    }
+  Future<Either<Failure, List>> getAllGeneric() async {
+    var data =
+        await getDio("http://www.usinasantafe.com.br/pmm_api_dev/view/os.php");
+    return data.fold(
+      (l) => left(l),
+      (r) => r.isEmpty ? left(EmptyList()) : right(r),
+    );
   }
 
   @override

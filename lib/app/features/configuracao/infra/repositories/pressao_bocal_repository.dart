@@ -25,10 +25,11 @@ class PressaoBocalRepositoryImpl extends GenericRepository<PressaoBocal> {
       var data = await datasourceWeb.getAllGeneric();
       return data.fold(
         (l) => left(l),
-        (r) => right(r),
+        (r) => right(List<PressaoBocalModel>.from(
+            r.map((e) => PressaoBocalModel.fromMap(e)))),
       );
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 
@@ -47,7 +48,7 @@ class PressaoBocalRepositoryImpl extends GenericRepository<PressaoBocal> {
       }
       return await datasourceDataBase.addAllGeneric(modelList);
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 }

@@ -25,10 +25,11 @@ class REquipAtivRepositoryImpl extends GenericRepository<REquipAtiv> {
       var data = await datasourceWeb.getAllGeneric();
       return data.fold(
         (l) => left(l),
-        (r) => right(r),
+        (r) => right(List<REquipAtivModel>.from(
+            r.map((e) => REquipAtivModel.fromMap(e)))),
       );
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 
@@ -46,7 +47,7 @@ class REquipAtivRepositoryImpl extends GenericRepository<REquipAtiv> {
       }
       return await datasourceDataBase.addAllGeneric(modelList);
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 }

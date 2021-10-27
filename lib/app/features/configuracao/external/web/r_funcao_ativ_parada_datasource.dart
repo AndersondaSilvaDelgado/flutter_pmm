@@ -14,19 +14,13 @@ class RFuncaoAtivParadaDatasourceWeb
   RFuncaoAtivParadaDatasourceWeb(this.getDio);
 
   @override
-  Future<Either<Failure, List<RFuncaoAtivParadaModel>>> getAllGeneric() async {
-    try {
-      var data = await getDio(
-          "http://www.usinasantafe.com.br/fpmmdev/rfuncaoativparada.php");
-      return data.fold(
-          (l) => left(l),
-          (r) => r.isEmpty
-              ? left(EmptyList())
-              : right(List<RFuncaoAtivParadaModel>.from(
-                  r.map((e) => RFuncaoAtivParadaModel.fromMap(e)))));
-    } catch (e) {
-      return Left(ErrorDesconhecido());
-    }
+  Future<Either<Failure, List>> getAllGeneric() async {
+    var data = await getDio(
+        "http://www.usinasantafe.com.br/pmm_api_dev/view/rfuncaoativparada.php");
+    return data.fold(
+      (l) => left(l),
+      (r) => r.isEmpty ? left(EmptyList()) : right(r),
+    );
   }
 
   @override

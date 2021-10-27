@@ -13,19 +13,13 @@ class ParadaDatasourceWeb extends GenericDatasource<ParadaModel> {
   ParadaDatasourceWeb(this.getDio);
 
   @override
-  Future<Either<Failure, List<ParadaModel>>> getAllGeneric() async {
-    try {
-      var data =
-          await getDio("http://www.usinasantafe.com.br/fpmmdev/parada.php");
-      return data.fold(
-          (l) => left(l),
-          (r) => r.isEmpty
-              ? left(EmptyList())
-              : right(List<ParadaModel>.from(
-                  r.map((e) => ParadaModel.fromMap(e)))));
-    } catch (e) {
-      return Left(ErrorDesconhecido());
-    }
+  Future<Either<Failure, List>> getAllGeneric() async {
+    var data = await getDio(
+        "http://www.usinasantafe.com.br/pmm_api_dev/view/parada.php");
+    return data.fold(
+      (l) => left(l),
+      (r) => r.isEmpty ? left(EmptyList()) : right(r),
+    );
   }
 
   @override

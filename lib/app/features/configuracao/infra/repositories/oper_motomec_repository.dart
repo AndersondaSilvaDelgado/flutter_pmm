@@ -25,10 +25,11 @@ class OperMotoMecRepositoryImpl extends GenericRepository<OperMotoMec> {
       var data = await datasourceWeb.getAllGeneric();
       return data.fold(
         (l) => left(l),
-        (r) => right(r),
+        (r) => right(List<OperMotoMecModel>.from(
+            r.map((e) => OperMotoMecModel.fromMap(e)))),
       );
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 
@@ -51,7 +52,7 @@ class OperMotoMecRepositoryImpl extends GenericRepository<OperMotoMec> {
       }
       return await datasourceDataBase.addAllGeneric(modelList);
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 }

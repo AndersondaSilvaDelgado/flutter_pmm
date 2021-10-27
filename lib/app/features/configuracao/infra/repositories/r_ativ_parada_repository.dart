@@ -25,10 +25,11 @@ class RAtivParadaRepositoryImpl extends GenericRepository<RAtivParada> {
       var data = await datasourceWeb.getAllGeneric();
       return data.fold(
         (l) => left(l),
-        (r) => right(r),
+        (r) => right(List<RAtivParadaModel>.from(
+            r.map((e) => RAtivParadaModel.fromMap(e)))),
       );
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 
@@ -46,7 +47,7 @@ class RAtivParadaRepositoryImpl extends GenericRepository<RAtivParada> {
       }
       return await datasourceDataBase.addAllGeneric(modelList);
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 }

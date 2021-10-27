@@ -25,10 +25,11 @@ class ItemCheckListRepositoryImpl extends GenericRepository<ItemCheckList> {
       var data = await datasourceWeb.getAllGeneric();
       return data.fold(
         (l) => left(l),
-        (r) => right(r),
+        (r) => right(List<ItemCheckListModel>.from(
+            r.map((e) => ItemCheckListModel.fromMap(e)))),
       );
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 
@@ -46,7 +47,7 @@ class ItemCheckListRepositoryImpl extends GenericRepository<ItemCheckList> {
       }
       return await datasourceDataBase.addAllGeneric(modelList);
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 }

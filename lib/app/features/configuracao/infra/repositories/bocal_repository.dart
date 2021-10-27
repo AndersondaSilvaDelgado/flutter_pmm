@@ -26,10 +26,11 @@ class BocalRepositoryImpl extends GenericRepository<Bocal> {
       var data = await datasourceWeb.getAllGeneric();
       return data.fold(
         (l) => left(l),
-        (r) => right(r),
+        (r) =>
+            right(List<BocalModel>.from(r.map((e) => BocalModel.fromMap(e)))),
       );
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 
@@ -47,7 +48,7 @@ class BocalRepositoryImpl extends GenericRepository<Bocal> {
       }
       return await datasourceDataBase.addAllGeneric(modelList);
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 }

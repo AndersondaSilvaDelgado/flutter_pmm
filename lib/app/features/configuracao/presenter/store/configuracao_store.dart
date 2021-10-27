@@ -11,10 +11,15 @@ abstract class _ConfiguracaoStoreBase with Store {
   final ReceberSalvarBDUsecasesImpl receberDados;
   _ConfiguracaoStoreBase(this.receberDados);
 
+  @observable
+  String msgAtualBD = "-";
+
   @action
   Future recDados() async {
-    // ignore: avoid_print
-    //print('teste');
     await receberDados.receberSalvarBD();
+  }
+
+  setMsgAtualBD(String ver) {
+    msgAtualBD = ver;
   }
 }

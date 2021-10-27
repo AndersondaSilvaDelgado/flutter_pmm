@@ -25,10 +25,11 @@ class PropriedadeRepositoryImpl extends GenericRepository<Propriedade> {
       var data = await datasourceWeb.getAllGeneric();
       return data.fold(
         (l) => left(l),
-        (r) => right(r),
+        (r) => right(List<PropriedadeModel>.from(
+            r.map((e) => PropriedadeModel.fromMap(e)))),
       );
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 
@@ -45,7 +46,7 @@ class PropriedadeRepositoryImpl extends GenericRepository<Propriedade> {
       }
       return await datasourceDataBase.addAllGeneric(modelList);
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 }

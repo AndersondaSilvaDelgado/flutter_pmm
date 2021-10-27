@@ -22,10 +22,11 @@ class TurnoRepositoryImpl extends GenericRepository<Turno> {
       var data = await datasourceWeb.getAllGeneric();
       return data.fold(
         (l) => left(l),
-        (r) => right(r),
+        (r) =>
+            right(List<TurnoModel>.from(r.map((e) => TurnoModel.fromMap(e)))),
       );
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 
@@ -44,7 +45,7 @@ class TurnoRepositoryImpl extends GenericRepository<Turno> {
       }
       return await datasourceDataBase.addAllGeneric(modelList);
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 }

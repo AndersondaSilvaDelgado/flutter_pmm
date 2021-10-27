@@ -25,10 +25,11 @@ class ROSAtivRepositoryImpl extends GenericRepository<ROSAtiv> {
       var data = await datasourceWeb.getAllGeneric();
       return data.fold(
         (l) => left(l),
-        (r) => right(r),
+        (r) => right(
+            List<ROSAtivModel>.from(r.map((e) => ROSAtivModel.fromMap(e)))),
       );
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 
@@ -46,7 +47,7 @@ class ROSAtivRepositoryImpl extends GenericRepository<ROSAtiv> {
       }
       return await datasourceDataBase.addAllGeneric(modelList);
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 }

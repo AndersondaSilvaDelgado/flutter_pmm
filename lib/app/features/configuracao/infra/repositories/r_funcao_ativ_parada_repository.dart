@@ -26,10 +26,11 @@ class RFuncaoAtivParadaRepositoryImpl
       var data = await datasourceWeb.getAllGeneric();
       return data.fold(
         (l) => left(l),
-        (r) => right(r),
+        (r) => right(List<RFuncaoAtivParadaModel>.from(
+            r.map((e) => RFuncaoAtivParadaModel.fromMap(e)))),
       );
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 
@@ -49,7 +50,7 @@ class RFuncaoAtivParadaRepositoryImpl
       }
       return await datasourceDataBase.addAllGeneric(modelList);
     } catch (e) {
-      return Left(ErroReturnRepository());
+      return Left(ErrorConvertRepository());
     }
   }
 }

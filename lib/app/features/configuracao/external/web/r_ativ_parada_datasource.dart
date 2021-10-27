@@ -13,19 +13,13 @@ class RAtivParadaDatasourceWeb extends GenericDatasource<RAtivParadaModel> {
   RAtivParadaDatasourceWeb(this.getDio);
 
   @override
-  Future<Either<Failure, List<RAtivParadaModel>>> getAllGeneric() async {
-    try {
-      var data = await getDio(
-          "http://www.usinasantafe.com.br/fpmmdev/rativparada.php");
-      return data.fold(
-          (l) => left(l),
-          (r) => r.isEmpty
-              ? left(EmptyList())
-              : right(List<RAtivParadaModel>.from(
-                  r.map((e) => RAtivParadaModel.fromMap(e)))));
-    } catch (e) {
-      return Left(ErrorDesconhecido());
-    }
+  Future<Either<Failure, List>> getAllGeneric() async {
+    var data = await getDio(
+        "http://www.usinasantafe.com.br/pmm_api_dev/view/rativparada.php");
+    return data.fold(
+      (l) => left(l),
+      (r) => r.isEmpty ? left(EmptyList()) : right(r),
+    );
   }
 
   @override
@@ -35,7 +29,6 @@ class RAtivParadaDatasourceWeb extends GenericDatasource<RAtivParadaModel> {
 
   @override
   Future<int> add(RAtivParadaModel entity) {
-    // TODO: implement add
     throw UnimplementedError();
   }
 }

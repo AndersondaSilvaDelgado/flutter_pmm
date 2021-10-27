@@ -13,19 +13,13 @@ class EquipDatasourceWeb extends GenericDatasource<EquipModel> {
   EquipDatasourceWeb(this.getDio);
 
   @override
-  Future<Either<Failure, List<EquipModel>>> getAllGeneric() async {
-    try {
-      var data =
-          await getDio("http://www.usinasantafe.com.br/fpmmdev/equip.php");
-      return data.fold(
-          (l) => left(l),
-          (r) => r.isEmpty
-              ? left(EmptyList())
-              : right(
-                  List<EquipModel>.from(r.map((e) => EquipModel.fromMap(e)))));
-    } catch (e) {
-      return Left(ErrorDesconhecido());
-    }
+  Future<Either<Failure, List>> getAllGeneric() async {
+    var data = await getDio(
+        "http://www.usinasantafe.com.br/pmm_api_dev/view/equip.php");
+    return data.fold(
+      (l) => left(l),
+      (r) => r.isEmpty ? left(EmptyList()) : right(r),
+    );
   }
 
   @override
